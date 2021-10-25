@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+import Login from './Login';
+import Register from './Register';
 
 export default function App() {
   return (
@@ -104,27 +106,5 @@ function Contact() {
   )
 }
 
-function Login() {
-  return (
-    <div id='login'>
-      <form id='login-form' action='/vertify-login' method='post'>
-        <h2>Login here</h2>
-        <input type='text' placeholder="Username" name='user' required />
-        <input type='password' placeholder='Password' name='password' required />
-        <input type='submit' name='login' />
-      </form>
-      <Link to='/register'>Register here</Link>
-    </div>
-  )
-}
 
-function Register() {
-  return (
-    <form id='register-form' action='/register' method='post'>
-      <h2>Register here</h2>
-      <input type='text' placeholder="Username" name='user' required />
-      <input type='password' placeholder='Password' name='password' required />
-      <input type='submit' name='register' />
-    </form>
-  )
-}
+
