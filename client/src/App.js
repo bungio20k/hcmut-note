@@ -5,8 +5,14 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import Login from './Login';
-import Register from './Register';
+import {
+  About,
+  Contact,
+  Home,
+  Login,
+  Register,
+  Tutorial,
+} from './component/All';
 
 export default function App() {
   return (
@@ -15,30 +21,6 @@ export default function App() {
         <Link to='/'>
           <img src='' alt='logo'></img>
         </Link>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/tutorial'>Tutorial</Link>
-            </li>
-
-            <li>
-              <Link to='/about'>About us</Link>
-            </li>
-
-            <li>
-              <Link to='/contact'>Contact</Link>
-            </li>
-
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-
-            <li>
-              <Link to='/register'>Sign up</Link>
-            </li>
-          </ul>
-        </nav>
-
 
         <Switch>
           <Route path='/tutorial'>
@@ -70,41 +52,4 @@ export default function App() {
     </Router>
   )
 }
-
-function Home() {
-  return (
-    <div>
-      <h1>A workspace for HCMUT-er.</h1>
-      <p>More than just a notes organiser, we provide an entire workspace for those who hustle hard.</p>
-      <Link to='/register'>Get started now</Link>
-      <img srd='' alt='illustration'></img>
-    </div>
-  )
-}
-
-function Tutorial() {
-  return (
-    <div>
-      <h2>Tutorial</h2>
-    </div>
-  )
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About us</h2>
-    </div>
-  )
-}
-
-function Contact() {
-  return (
-    <div>
-      <h2>Contact us</h2>
-    </div>
-  )
-}
-
-
 
