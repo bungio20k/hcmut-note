@@ -50,6 +50,16 @@ const EditNote = () => {
     });
   };
 
+  const closeHandler = () => {
+    setNote({
+      title: "",
+      date: "",
+      tag: "",
+      content: "",
+    });
+    setEditStatus({ status: false, id: "" });
+  };
+
   const editNote = (id) => {
     setEditStatus({
       status: true,
@@ -98,6 +108,7 @@ const EditNote = () => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onClick={closeHandler}
               ></button>
             </div>
             <div className="modal-body">
@@ -163,6 +174,7 @@ const EditNote = () => {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
+                onClick={closeHandler}
               >
                 Close
               </button>
