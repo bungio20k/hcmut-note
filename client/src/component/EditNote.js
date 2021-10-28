@@ -73,6 +73,10 @@ const EditNote = () => {
     setData((prev) => prev.filter((note, index) => id !== index));
   };
 
+  const seeDetailNote = (id) => {
+    setNote(data[id]);
+  };
+
   return (
     <>
       <button
@@ -220,64 +224,62 @@ const EditNote = () => {
                         className="btn btn-success ms-2"
                         data-bs-toggle="modal"
                         data-bs-target="#see-detail"
+                        onClick={() => seeDetailNote(index)}
                       >
                         See detail
                       </button>
-                      <div
-                        className="modal fade"
-                        id="see-detail"
-                        tabIndex="2"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                      >
-                        <div className="modal-dialog">
-                          <div className="modal-content">
-                            <div className="modal-header">
-                              <h5
-                                className="modal-title"
-                                id="exampleModalLabel"
-                              >
-                                {item.title}
-                              </h5>
-                              <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                              ></button>
-                            </div>
-                            <div
-                              className="modal-body"
-                              id="detail-note-body"
-                              dangerouslySetInnerHTML={{
-                                __html: item.content,
-                              }}
-                            ></div>
-                            <div className="modal-footer justify-content-between">
-                              <div className="d-flex align-items-center">
-                                <div>
-                                  <span className="badge bg-primary">
-                                    {item.tag}
-                                  </span>
-                                </div>
-                                <p className="ms-3 mb-0">{item.date}</p>
-                              </div>
-                              <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                              >
-                                Close
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
+          <div
+            className="modal fade"
+            id="see-detail"
+            tabIndex="2"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">
+                    {note.title}
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={closeHandler}
+                  ></button>
+                </div>
+                <div
+                  className="modal-body"
+                  id="detail-note-body"
+                  dangerouslySetInnerHTML={{
+                    __html: note.content,
+                  }}
+                ></div>
+                <div className="modal-footer justify-content-between">
+                  <div className="d-flex align-items-center">
+                    <div>
+                      <span className="badge bg-primary">{note.tag}</span>
+                    </div>
+                    <p className="ms-3 mb-0">{note.date}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onClick={closeHandler}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
