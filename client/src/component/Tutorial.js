@@ -8,9 +8,9 @@ import {nanoid} from 'nanoid';
 
 import Button from 'react-bootstrap/Button';
 
-import AddNote from './component/AddNote';
-import NotesList from './component/NotesList';
-import Search from './component/Search';
+import AddNote from './AddNote';
+import NotesList from './NotesList';
+import Search from './Search';
 //
 
 export default function Tutorial(handleAddNote) {
@@ -84,7 +84,9 @@ const [searchText, setSearchText] = useState('');
         handleAddNote={addNote}
 
       />
-      <text> other note</text>
+       <Button variant="primary" size="lg" active>
+    OTHER
+  </Button>
 
       <NotesList 
         notes = {notes.filter((note)=>(
@@ -93,9 +95,7 @@ const [searchText, setSearchText] = useState('');
         ))}
       />
     </div>
-      <Navbar />
-      <h1>Tutorial</h1>
-      <EditNote />
+      
     
   );
 }
