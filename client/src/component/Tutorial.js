@@ -63,36 +63,38 @@ export default function Tutorial(handleAddNote) {
   const [searchText, setSearchText] = useState("");
   //
   return (
-    <div className="container">
-      <Navbar />
-      <h1>Tutorial</h1>
-      <EditNote />
-      <Search handleSearchNote={setSearchText} />
-      <AddNote handleAddNote={handleAddNote} />
-      <Button variant="primary" size="lg" active>
-        PIN
-      </Button>
-      <NotesList
-        notes={notes.filter(
-          (note) =>
-            (note.title.toLowerCase().includes(searchText) ||
-              note.text.toLowerCase().includes(searchText)) &&
-            note.pinned.includes("y")
-        )}
-        handleAddNote={addNote}
-      />
-      <Button variant="primary" size="lg" active>
-        OTHER
-      </Button>
+    <>      <Navbar />
+      <div className="container">
 
-      <NotesList
-        notes={notes.filter(
-          (note) =>
-            (note.title.toLowerCase().includes(searchText) ||
-              note.text.toLowerCase().includes(searchText)) &&
-            note.pinned.includes("n")
-        )}
-      />
-    </div>
+        <h1>Tutorial</h1>
+        <EditNote />
+        <Search handleSearchNote={setSearchText} />
+        <AddNote handleAddNote={handleAddNote} />
+        <Button variant="primary" size="lg" active>
+          PIN
+        </Button>
+        <NotesList
+          notes={notes.filter(
+            (note) =>
+              (note.title.toLowerCase().includes(searchText) ||
+                note.text.toLowerCase().includes(searchText)) &&
+              note.pinned.includes("y")
+          )}
+          handleAddNote={addNote}
+        />
+        <Button variant="primary" size="lg" active>
+          OTHER
+        </Button>
+
+        <NotesList
+          notes={notes.filter(
+            (note) =>
+              (note.title.toLowerCase().includes(searchText) ||
+                note.text.toLowerCase().includes(searchText)) &&
+              note.pinned.includes("n")
+          )}
+        />
+      </div>
+    </>
   );
 }

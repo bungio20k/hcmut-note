@@ -1,15 +1,41 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
+import '../css/home.css'
+import landpageimg from '../imgs/a.jpg'
 
 export default function Home() {
     return (
-        <div>
-            <Navbar />
-            <h1>A workspace for HCMUT-er.</h1>
-            <p>More than just a notes organiser, we provide an entire workspace for those who hustle hard.</p>
-            <Link to='/register'>Get started now</Link>
-            <img srd='' alt='illustration'></img>
-        </div>
+        <div className='all'>
+            <div className="Nav">
+                <Navbar />
+            </div>
+
+            < div className="row">
+                <div className='login'>
+                    <div>
+                        <h2>A workspace for HCMUT-er </h2>
+                        <h5 id='hometext'> More than just a notes organiser, we provide an entire workspace for those who hustle hard</h5>
+                    </div>
+
+                    <Link to='/register'>
+                        <input type='submit' value='Get started now' id='subbutton' to='/login' />
+                    </Link>
+                    <br />
+                    <hr />
+                    <br />
+                    <div>
+                        Already have an account?
+                        <Link to='/login' id="res">Login here</Link>
+                    </div>
+
+                </div>
+
+                <div className='rightImg'>
+                    <img src={landpageimg} alt="Something" id='ima' />
+                </div>
+            </div>
+
+        </div >
     )
 }

@@ -1,0 +1,107 @@
+
+
+/* .Nav {
+	background-color: aqua;
+} */
+
+/* h2{
+	display: inline;
+} */
+
+.all {
+	width: 100%;
+	height: 100%;
+	/* background-color: black; */
+	padding-bottom: 100px;
+}
+
+.row {
+  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+  /* background-color: blueviolet; */
+}
+
+ .row .login {
+	padding: 80px 10px 50px 120px;
+	display: inline;
+	width: 40%;
+	height: 100%;
+	/* background-color: greenyellow; */
+	display: inline;
+	/* margin-top: 100px; */
+
+} 
+
+ .row .rightImg{
+	width: 60%;
+    height: 100%;
+	display: inline;
+	/* background-color:bisque; */
+	/* border-width: 4px; */
+	/* border-style: solid; */
+    padding-top: 40px;
+	padding-bottom: 50px;
+} 
+
+
+.row .rightImg #ima{
+	height: 100%;
+	width: 70%;
+	/* border-width: 4px; */
+	/* border-style: dashed; */
+	margin-left: 100px;
+	/* display: inline; */
+}
+
+.row .login h2 {
+	background-color: azure;
+	color: #5BC0DE;
+	font-weight: bold;
+}
+
+.row .login h5 {
+	font-style: italic;
+}
+
+
+
+#jometext{
+	margin: 20px 20px 20px 0px;
+}
+
+
+
+#checkbox{
+	text-align: left;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+
+#subbutton{
+	margin-left: auto;
+	margin-right: auto;
+	border-style: none;
+}
+
+#subbutton{
+	display: block;
+	background-color: #5BC0DE;
+	width: 60%;
+	height: 45px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: larger;
+	color: aliceblue;
+	margin-top: 50px;
+	/* text-decoration: none; */
+}
+
+#res{
+	margin-left: 90px;
+	/* background-color: ; */
+}
+
+/* #started{
+	text-decoration: none;
+} */

@@ -3,8 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  // Link
 } from 'react-router-dom';
+
 import {
   About,
   Contact,
@@ -14,13 +15,15 @@ import {
   Tutorial,
 } from './component/All';
 
+// import logo from '../src/imgs/logo.jpg'
+
 export default function App() {
   return (
     <Router>
       <div>
-        <Link to='/'>
-          <img src='' alt='logo'></img>
-        </Link>
+        {/* <Link to='/'>
+          <img src="" alt='logo'></img>
+        </Link> */}
 
         <Switch>
           <Route path='/tutorial'>
