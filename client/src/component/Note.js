@@ -1,4 +1,3 @@
-// import { MdDeleteForever } from 'react-icons/md';
 import { FaTimes } from 'react-icons/fa'
 
 const Note = ( {id,title, text, date }) => {

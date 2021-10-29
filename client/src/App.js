@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  // Link
 } from 'react-router-dom';
 
 import {
@@ -13,17 +12,15 @@ import {
   Login,
   Register,
   Tutorial,
+  NotePage,
+  Notification
 } from './component/All';
 
-// import logo from '../src/imgs/logo.jpg'
 
 export default function App() {
   return (
     <Router>
       <div>
-        {/* <Link to='/'>
-          <img src="" alt='logo'></img>
-        </Link> */}
 
         <Switch>
           <Route path='/tutorial'>
@@ -44,6 +41,14 @@ export default function App() {
 
           <Route path='/register'>
             <Register />
+          </Route>
+
+          <Route path='/notepage'>
+            <NotePage />
+          </Route>
+
+          <Route path='/notification'>
+            <Notification />
           </Route>
 
           <Route path='/'>
