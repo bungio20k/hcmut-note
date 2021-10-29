@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import '../css/login-signup.css'
-import landpageimg from '../imgs/a.jpg'
+import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
 import { Link } from 'react-router-dom';
 
 export default function Register() {
@@ -43,7 +43,6 @@ export default function Register() {
             <a href="http://dontpad.com/hcmut-note-TaS"> Terms of Service and Privacy</a>
             {/* <a href='#'>Forgot password</a> */}
           </div>
-
           <input type='submit' value='Sign up now' id='subbutton' />
           <br />
           <hr />

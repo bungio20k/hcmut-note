@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
 import '../css/login-signup.css'
-import landpageimg from '../imgs/a.jpg'
+import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
 
 export default function Login() {
 

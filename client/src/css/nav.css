@@ -1,6 +1,7 @@
-/* #NavBar{
-	background-color: brown
-} */
+:root{
+	--pagetone:#38d39f;
+	/* --oldtone:#5BC0DE; */
+}
 
 li{
 	display: inline;
@@ -8,12 +9,19 @@ li{
 	/* background-color: red;
 	/* border-width: 5px; */
 	/* font-style: bold; */
+	padding-top:6px;
+	padding-bottom: 10px;
+}
+
+li:hover{
+	background-color:black;
+	border-radius: 5px;
 }
 
 #logoimg{
 	height: 70px;
-	border-color: #5BC0DE;
-	border-radius: 10px;
+	border-color: var(--pagetone);
+	border-radius: 15px;
 	border-style: solid;
 	margin-left: 90px;
 }
@@ -26,14 +34,14 @@ ul {
 	margin-left: 15%;
 	margin-right: 10%;
 	height: 40px;
-	background-color:#5BC0DE;
+	background-color: var(--pagetone);
 	padding-top: 4px;
 
 }
 
 .mainNav{
 	/* display: inline; */
-	background-color:aqua;
+	background-color: var(--pagetone);
 	width: 70%;
 }
 
@@ -51,7 +59,7 @@ ul {
 	color: black
 }
 #login-bt{
-	background-color: #5BC0DE;;
+	background-color:  var(--pagetone);
 }
 
 #login-bt, #reg-bt{

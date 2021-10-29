@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
 import '../css/home.css'
-import landpageimg from '../imgs/a.jpg'
+import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
 
 export default function Home() {
     return (
@@ -18,8 +18,8 @@ export default function Home() {
                         <h5 id='hometext'> More than just a notes organiser, we provide an entire workspace for those who hustle hard</h5>
                     </div>
 
-                    <Link to='/register'>
-                        <input type='submit' value='Get started now' id='subbutton' to='/login' />
+                    <Link to='/register' >
+                        <input type='submit' value='Get started now' id='getbtt' to='/login' />
                     </Link>
                     <br />
                     <hr />

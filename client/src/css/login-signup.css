@@ -1,12 +1,8 @@
 
-
-/* .Nav {
-	background-color: aqua;
-} */
-
-/* h2{
-	display: inline;
-} */
+:root{
+	--pagetone:#38d39f;
+	/* --oldtone:#5BC0DE; */
+}
 
 .all {
 	width: 100%;
@@ -16,7 +12,7 @@
 }
 
 .row {
-  margin-top: 60px;
+  margin-top: 10px;
   width: 100%;
   height: 100%;
   /* background-color: blueviolet; */
@@ -30,6 +26,7 @@
 	/* background-color: greenyellow; */
 	display: inline;
 	margin-top: 30px;
+	/* margin-left: 5px; */
 
 } 
 
@@ -56,7 +53,7 @@
 
 .row .login h2 {
 	background-color: azure;
-	color: #5BC0DE;
+	color: var(--pagetone);
 	font-weight: bold;
 }
 
@@ -84,23 +81,24 @@
 	text-align: left;
 	margin-right: 10px;
 	margin-bottom: 20px;
+	background-color: var(--pagetone);
 }
+
+
 
 #subbutton{
 	margin-left: auto;
 	margin-right: auto;
-	
-}
-
-#subbutton{
 	display: block;
-	background-color: #5BC0DE;
+	background-color: var(--pagetone);
 	width: 60%;
 	height: 45px;
 	border-radius: 5px;
 	font-weight: bold;
 	font-size: larger;
 	color: aliceblue;
+	margin-top: 5px;
+	border-style: none;
 }
 
 #res{
