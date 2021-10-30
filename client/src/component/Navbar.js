@@ -20,7 +20,7 @@ const linkStyle = {
 export default function Navbar() {
 
     return (
-        <div >
+        <div className='container'>
             <Link to='/'>
                 <img src={logo} alt='logo-note' id='logoimg' />
             </Link>
