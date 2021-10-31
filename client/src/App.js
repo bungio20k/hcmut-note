@@ -1,9 +1,5 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import {
   About,
@@ -13,51 +9,52 @@ import {
   Register,
   Tutorial,
   NotePage,
-  Notification
-} from './component/All';
-
+  Notification,
+} from "./component/All";
+import WorkSpace from "./component/WorkSpace";
 
 export default function App() {
   return (
     <Router>
       <div>
-
         <Switch>
-          <Route path='/tutorial'>
+          <Route path="/tutorial">
             <Tutorial />
           </Route>
 
-          <Route path='/about'>
+          <Route path="/about">
             <About />
           </Route>
 
-          <Route path='/contact'>
+          <Route path="/contact">
             <Contact />
           </Route>
 
-          <Route path='/login'>
+          <Route path="/login">
             <Login />
           </Route>
 
-          <Route path='/register'>
+          <Route path="/register">
             <Register />
           </Route>
 
-          <Route path='/notepage'>
+          <Route path="/notepage">
             <NotePage />
           </Route>
 
-          <Route path='/notification'>
+          <Route path="/notification">
             <Notification />
           </Route>
 
-          <Route path='/'>
+          <Route path="/workspace">
+            <WorkSpace />
+          </Route>
+
+          <Route path="/">
             <Home />
           </Route>
         </Switch>
-
       </div>
     </Router>
-  )
+  );
 }
-
