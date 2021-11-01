@@ -1,4 +1,4 @@
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
 
 export default function Tutorial() {
   return (
@@ -6,5 +6,5 @@ export default function Tutorial() {
       <Navbar />
       <h1>Tutorial</h1>
     </div>
-  )
+  );
 }

@@ -10,32 +10,30 @@ export default function Home() {
             <div className="Nav">
                 <Navbar />
             </div>
-
-            < div className="row">
-                <div className='login'>
-                    <div>
-                        <h2>A workspace for HCMUT-er </h2>
+            <div className='container'>
+                <div className="row">
+                    <div className='col-md-1'></div>
+                    <div className="col-md-4" id='left'>
+                        <h2 id='h2text'>A workspace for  </h2>
+                        <h2>HCMUT-er</h2>
                         <h5 id='hometext'> More than just a notes organiser, we provide an entire workspace for those who hustle hard</h5>
+                        <Link to='/register' >
+                            <input type='submit' value='Get started now' id='getbtt' to='/login' />
+                        </Link>
+                        <br />
+                        <hr />
+                        <br />
+                        <div>
+                            Already have an account?
+                            <Link to='/login' id="loginbt">Login here</Link>
+                        </div>
+
                     </div>
-
-                    <Link to='/register' >
-                        <input type='submit' value='Get started now' id='getbtt' to='/login' />
-                    </Link>
-                    <br />
-                    <hr />
-                    <br />
-                    <div>
-                        Already have an account?
-                        <Link to='/login' id="res">Login here</Link>
+                    <div className="col-md-7">
+                        <img src={landpageimg} alt="Something" id='img' />
                     </div>
-
-                </div>
-
-                <div className='rightImg'>
-                    <img src={landpageimg} alt="Something" id='ima' />
                 </div>
             </div>
-
         </div >
     )
 }
