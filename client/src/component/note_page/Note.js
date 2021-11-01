@@ -1,24 +1,69 @@
-import { FaTimes } from 'react-icons/fa'
+const Note = ({ note, del, edit, pinHandler, detail }) => {
+  const { id, title, text, date, pinned, color } = note;
+  const styleCard = {
+    position: "relative",
+    backgroundColor: color,
+  };
+  const styleEditIcon = {
+    position: "absolute",
+    top: "0",
+    right: "2px",
+  };
+  const styleDelIcon = {
+    position: "absolute",
+    bottom: "0",
+    right: "2px",
+  };
+  const stylePinIcon = {
+    position: "absolute",
+    top: "0",
+    left: "2px",
+  };
+  return (
+    <div className="card card-note" style={styleCard}>
+      {pinned === "n" ? (
+        <i
+          role="button"
+          className="bi bi-pin"
+          style={stylePinIcon}
+          onClick={() => pinHandler(id, "n")}
+        ></i>
+      ) : (
+        <i
+          role="button"
+          className="bi bi-pin-angle"
+          style={stylePinIcon}
+          onClick={() => pinHandler(id, "y")}
+        ></i>
+      )}
+      <i
+        role="button"
+        className="bi bi-pencil"
+        style={styleEditIcon}
+        onClick={() => {
+          edit(id);
+        }}
+      ></i>
+      <div
+        className="card-body"
+        role="button"
+        onClick={() => detail(id)}
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#see-detail"
+      >
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">{text}</p>
+        <p className="card-text">{date}</p>
+      </div>
+      <i
+        role="button"
+        className="bi bi-trash"
+        style={styleDelIcon}
+        onClick={() => del(id)}
+      ></i>
+    </div>
+  );
+};
 
-const Note = ( {id,title, text, date }) => {
-    return (
-        <div className = 'Note'>
-            <h3>{title}</h3>
-            <span> {text}</span>
-            <div className = 'Note-footer'>
-                
-                <small>{date}</small>
-                
-                <FaTimes
-                    className = 'delete-icon'
-                    size = '1.3em'
-                    style = {{color: 'red', cursor: 'pointer'}}
-                />
-                
-                
-            </div>
-        </div>
-    )
-}
-
-export default Note
+export default Note;
