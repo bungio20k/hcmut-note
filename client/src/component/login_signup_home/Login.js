@@ -45,29 +45,11 @@ export default function Login() {
 
 
 
-<<<<<<< HEAD:client/src/component/login_signup_home/Login.js
-                    <div>
-
-                        <input type='checkbox' id='checkbox' />
-                        Remember me
-                        {/* <a href='#'>Forgot password</a> */}
-                    </div>
-                    <Link to='/notepage'>
-                        <input type='submit' value='Login now' id='subbutton' />
-                    </Link>
-                    <br />
-                    <hr />
-                    <br />
-                    <div>
-                        Don't have account?
-                        <Link to='/register' id="res">Register here</Link>
-=======
                     <div className="col-md-7">
                         <img src={landpageimg} alt="Something" id='img' />
->>>>>>> 2fdfec648658d455ba8faa3b070f917be4112d15:client/src/component/Login.js
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
