@@ -5,11 +5,13 @@ import "suneditor/dist/css/suneditor.min.css";
 const EditNote = () => {
   //save notes
   const [data, setData] = useState([]);
+
   //edit or add
   const [editStatus, setEditStatus] = useState({
     status: false,
     id: "",
   });
+
   //store the information of the note when input on change
   const [note, setNote] = useState({
     title: "",

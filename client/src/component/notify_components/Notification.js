@@ -3,9 +3,16 @@ import React, { useState } from 'react';
 import {
   Note,
   SmallNote,
-} from './notify_components/All';
+} from './All';
+
+import {
+  Sidebar,
+  Search,
+  User
+} from '../navigation_sidebar/All'
 
 import Calendar from 'react-calendar';
+import Logo from '../login_signup_home/imgs/logo.jpg';
 
 const todayNoteData = [{
   name: 'Do homework',
@@ -129,8 +136,14 @@ export default function Notification() {
   const [currentDay, changeDay] = useState(new Date());
 
   return (
-    <div class='container-fluid' id='notification'>
+    <div class='container' id='notification'>
+      <div class='row w-75' id='navigation-bar'>
+        <img src={Logo} class='col-1'></img>
+        <Search />
+        <User />
+      </div>
       <div class='row'>
+        <Sidebar />
         <div class='col-8'>
           <h3 class='text-white bg-info rounded-pill col-4'>
             <i class="bi bi-alarm-fill"></i>

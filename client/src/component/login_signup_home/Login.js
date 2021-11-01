@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
-import '../css/login-signup.css'
-import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
+import './css/login-signup.css'
+import landpageimg from './imgs/Mobile-login-Cristina.jpg'
 
 export default function Login() {
 
@@ -43,7 +43,9 @@ export default function Login() {
                         Remember me
                         {/* <a href='#'>Forgot password</a> */}
                     </div>
-                    <input type='submit' value='Login now' id='subbutton' />
+                    <Link to='/notepage'>
+                        <input type='submit' value='Login now' id='subbutton' />
+                    </Link>
                     <br />
                     <hr />
                     <br />

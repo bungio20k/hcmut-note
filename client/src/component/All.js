@@ -1,11 +1,12 @@
-import About from './About';
-import Contact from './Contact';
-import Home from './Home';
-import Login from './Login';
-import Register from './Register';
-import Tutorial from './Tutorial';
-import NotePage from './NotePage';
-import Notification from './Notification';
+import About from './login_signup_home/About';
+import Contact from './login_signup_home/Contact';
+import Home from './login_signup_home/Home';
+import Login from './login_signup_home/Login';
+import Register from './login_signup_home/Register';
+import Tutorial from './login_signup_home/Tutorial';
+import NotePage from './note_page/NotePage';
+import Notification from './notify_components/Notification';
+
 export {
     About,
     Contact,

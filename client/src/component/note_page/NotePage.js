@@ -9,6 +9,9 @@ import AddNote from "./AddNote";
 import NotesList from "./NotesList";
 import Search from "./Search";
 //
+import User from '../navigation_sidebar/User'
+import Logo from '../login_signup_home/imgs/logo.jpg';
+
 
 export default function NotePage(handleAddNote) {
   //
@@ -62,9 +65,12 @@ export default function NotePage(handleAddNote) {
   return (
     <>
       <div className="container">
+        <div class='row w-75' id='navigation-bar'>
+          <img src={Logo} class='col-1'></img>
+          <Search handleSearchNote={setSearchText} />
+          <User />
+        </div>
         <EditNote />
-        <Search handleSearchNote={setSearchText} />
-        <AddNote handleAddNote={handleAddNote} />
         <h3>PIN</h3>
         <NotesList
           notes={notes.filter(

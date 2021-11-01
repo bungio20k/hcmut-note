@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
-import '../css/home.css'
-import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
+import './css/home.css'
+import landpageimg from './imgs/Mobile-login-Cristina.jpg'
 
 export default function Home() {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
-import '../css/login-signup.css'
-import landpageimg from '../imgs/Mobile-login-Cristina.jpg'
+import './css/login-signup.css'
+import landpageimg from './imgs/Mobile-login-Cristina.jpg'
 import { Link } from 'react-router-dom';
 
 export default function Register() {
