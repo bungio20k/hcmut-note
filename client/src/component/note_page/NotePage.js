@@ -9,6 +9,7 @@ import Search from "./Search";
 import User from "../navigation_sidebar/User";
 import Logo from "../login_signup_home/imgs/logo.jpg";
 import Note from "./Note";
+import Sidebar from "../navigation_sidebar/Sidebar";
 
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
@@ -168,6 +169,21 @@ export default function NotePage() {
           <img src={Logo} className="col-1" style={{ height: "30px" }}></img>
           <Search handleSearchNote={setSearchText} />
           <User />
+         
+          
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
         </div>
       </div>
       <div className="container-fluid">
@@ -176,7 +192,7 @@ export default function NotePage() {
             className="side-bar col-lg-1 bg-light"
             style={{ height: "100vh" }}
           >
-            sidebar
+            <Sidebar />
           </div>
           <div className="col-lg-11">
             <div className="container-fluid mt-5">
@@ -231,7 +247,7 @@ export default function NotePage() {
                           id="title"
                           placeholder="Title"
                         />
-                        <label htmlFor="text">Text</label>
+                        <label htmlFor="text">Highlight</label>
                         <input
                           onChange={changeHandler}
                           name="text"

@@ -7,7 +7,7 @@ const NotesList = ({ notes, handleAddNote }) => {
         <Note
           id={note.id}
           title={note.title}
-          text={note.text}
+          text={note.content}
           date={note.date}
           pinned={note.pinned}
         />
