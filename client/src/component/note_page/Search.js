@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = ({ handleSearchNote }) => {
   return (
-    <div className="input-group rounded w-75">
+    <div className="input-group rounded w-50">
       <input
         type="search"
         className="form-control rounded col"

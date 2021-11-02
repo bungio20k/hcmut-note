@@ -1,10 +1,10 @@
 import React from "react";
-
+import { Link } from 'react-router-dom'
 //
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
-import Search from "./Search";
+import Search from '../navigation_sidebar/Search';
 //
 import User from "../navigation_sidebar/User";
 import Logo from "../login_signup_home/imgs/logo.jpg";
@@ -162,25 +162,21 @@ export default function NotePage() {
   return (
     <>
       <div className="header">
-        <div
-          className="row navbar navbar-expand-lg navbar-light bg-light m-0"
-          id="navigation-bar"
-        >
-          <img src={Logo} className="col-1" style={{ height: "30px" }}></img>
-          <Search handleSearchNote={setSearchText} />
 
-          
-          
+        <div class='container-fluid bg-info' id='navigation-bar'>
+          <div class='row'>
+            <Link to='/notepage' class='col-1'>
+              <img src={Logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-7' />
+            </Link>
+            <Search handleSearchNote={setSearchText} />
+            <User />
+          </div>
         </div>
       </div>
+      <br />
       <div className="container-fluid">
         <div className="row">
-          <div
-            className="side-bar col-lg-1 bg-light"
-            style={{ height: "100vh" }}
-          >
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div className="col-lg-11">
             <div className="container-fluid mt-5">
               <div>

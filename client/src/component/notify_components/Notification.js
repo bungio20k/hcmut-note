@@ -11,7 +11,7 @@ import {
   Search,
   User
 } from '../navigation_sidebar/All'
-
+import './css.css'
 import Calendar from 'react-calendar';
 import Logo from '../login_signup_home/imgs/logo.jpg';
 
@@ -148,10 +148,10 @@ export default function Notification() {
         </div>
       </div>
       <br />
-      <div class='container-fluid border border-info'>
+      <div class='container-fluid'>
         <div class='row'>
           <Sidebar />
-          <div class='col-7 border border-info'>
+          <div class='col-7'>
             {
               (currentDay.toDateString() == new Date().toDateString()) ?
                 <button class='btn text-light btn-info rounded-pill'>
@@ -164,9 +164,12 @@ export default function Notification() {
                   {currentDay.toDateString()}
                 </button>
             }
-            {todayNoteData.map(note => (<Note data={note} />))}
+            <div class='col d-grid gap-2 offset-md-2' id='note-list'>
+              {todayNoteData.map(note => (<Note data={note} />))}
+            </div>
+
           </div>
-          <div class='col'>
+          <div class='col align-self-center text-info'>
             <Calendar
               value={currentDay}
               onChange={changeDay}
@@ -174,15 +177,20 @@ export default function Notification() {
           </div>
         </div>
       </div>
-
-      <h3 class='text-white bg-info rounded-pill col-2'><i class="bi bi-calendar-minus-fill"></i> This week</h3>
-      <div class='row'>
-        {week.map(day => (
-          <div class='col'>
-            <h5>{day}</h5>
-            {weeklyNoteData[day].map(note => (<SmallNote data={note} />))}
-          </div>
-        ))}
+      <br />
+      <div class='container-fluid'>
+        <button class='btn text-light btn-info rounded-pill offset-md-1'>
+          <i class="bi bi-calendar-minus-fill"> </i>
+          This week
+        </button>
+        <div class='row'>
+          {week.map(day => (
+            <div class='col border border-info'>
+              <h5 class='text-info text-center'>{day}</h5>
+              {weeklyNoteData[day].map(note => (<SmallNote data={note} />))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

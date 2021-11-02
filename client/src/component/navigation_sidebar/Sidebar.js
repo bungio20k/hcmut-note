@@ -5,7 +5,7 @@ const tagData = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"];
 
 export default function Sidebar() {
   return (
-    <div className="col-1 border border-info">
+    <div className="col-1">
       <Link to='/notepage'>
         <button type="button" className="btn btn-outline-info w-100">
           <i className="bi bi-sticky-fill"></i>
