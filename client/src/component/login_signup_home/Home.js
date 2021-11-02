@@ -10,6 +10,8 @@ export default function Home() {
             <div className="Nav">
                 <Navbar />
             </div>
+            <hr class='text-info'/>
+            <br />
             <div className='container'>
                 <div className="row">
                     <div className='col-md-1'></div>

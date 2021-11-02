@@ -13,8 +13,10 @@ export default function Login() {
             <div className="Nav">
                 <Navbar />
             </div>
+            <hr class='text-info'/>
+            <br />
             <div className='container'>
-                <div className="row">
+                <div className="row" id='login-form'>
                     <div className='col-md-1'></div>
                     <div className="col-md-4" id='left'>
 
@@ -38,7 +40,7 @@ export default function Login() {
                         </div>
                     </div>
 
-                    <img src={illus} class='col-7'></img>
+                    <img src={illus} class='col-7' id='illus'></img>
                 </div>
             </div>
         </div>

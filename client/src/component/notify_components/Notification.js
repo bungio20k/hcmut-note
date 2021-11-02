@@ -138,14 +138,24 @@ export default function Notification() {
 
   return (
     <div id='notification'>
-      <div class='container-fluid bg-info' id='navigation-bar'>
-        <div class='row'>
-          <Link to='/notepage' class='col-1'>
-            <img src={Logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-7' />
-          </Link>
+      <div class='container-fluid bg-info' id='navbar'>
+
+        <Link to='/notepage'>
+          <img src={Logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-1' />
+        </Link>
+
+        <div class='btn-group col-6 offset-md-1'>
           <Search />
-          <User />
         </div>
+
+        <button class='btn btn-outline-light col-1 offset-md-2'>
+          <i class="bi bi-lightbulb"></i>
+        </button>
+
+        <button class='btn btn-outline-light col-1'>
+          <i class="bi bi-box-arrow-in-left"></i>
+        </button>
+
       </div>
       <br />
       <div class='container-fluid'>
@@ -169,7 +179,7 @@ export default function Notification() {
             </div>
 
           </div>
-          <div class='col align-self-center text-info'>
+          <div class='col justify-self-center text-info' id='calendar'>
             <Calendar
               value={currentDay}
               onChange={changeDay}
