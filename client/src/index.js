@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
+
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'react-calendar/dist/Calendar.css';
+
 
 ReactDOM.render(
   <React.StrictMode>
