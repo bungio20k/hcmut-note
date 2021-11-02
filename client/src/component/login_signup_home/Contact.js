@@ -5,7 +5,10 @@ export default function Contact() {
     return (
         <div>
             <Navbar />
-            <h1>Contact us</h1>
+            <br />
+            <br />
+            <br />
+            <h1 class='text-center text-info'>This feature is still in development, please come back later!</h1>
         </div>
     )
 }

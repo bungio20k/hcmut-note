@@ -1,6 +1,6 @@
 
 :root{
-	--pagetone:#38d39f;
+	--pagetone: #5bc0de;
 	/* --oldtone:#5BC0DE; */
 }
 
@@ -90,7 +90,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	background-color: var(--pagetone);
+	background-color: #5bc0de;
 	width: 60%;
 	height: 45px;
 	border-radius: 5px;

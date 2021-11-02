@@ -4,86 +4,44 @@ import { Link } from 'react-router-dom'
 import logo from './imgs/logo.jpg'
 import './css/nav.css'
 
-// const navStyle = {
-//     margin: '40px',
-//     border: '5px solid pink'
-// };
-
-const linkStyle = {
-
-    color: 'white',
-    // "background-color": 'green',
-    "font-weight": 'bold',
-    "text-decoration": 'none'
-};
 
 export default function Navbar() {
 
     return (
-        <div className='container'>
-            <Link to='/'>
-                <img src={logo} alt='logo-note' id='logoimg' />
-            </Link>
-            <ul>
+        <div class='container-fluid' id='navbar'>
 
-                <li>
-                    <Link style={linkStyle} to='/'>Home</Link>
-                </li>
-                <li>
-                    <Link style={linkStyle} to='/tutorial'>Tutorial</Link>
-                </li>
+                <Link to='/'>
+                    <img src={logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-1' />
+                </Link>
 
-                <li>
-                    <Link style={linkStyle} to='/about'>About us</Link>
-                </li>
+            <div class='btn-group col-6 offset-md-1' role='group'>
 
-                <li>
-                    <Link style={linkStyle} to='/contact'>Contact</Link>
-                </li>
+                <button type='button' class='btn btn-outline-info'>
+                    <Link class='text-secondary' to='/'>Home</Link>
+                </button>
 
-            </ul>
+                <button type='button' class='btn btn-outline-info'>
+                    <Link class='text-secondary' to='/tutorial'>Tutorial</Link>
+                </button>
 
+                <button type='button' class='btn btn-outline-info'>
+                    <Link class='text-secondary' to='/about'>About us</Link>
+                </button>
 
-            <button id="login-bt">
-                <Link to='/login' id="loginlink">Login</Link>
+                <button type='button' class='btn btn-outline-info'>
+                    <Link class='text-secondary' to='/contact'>Contact</Link>
+                </button>
+
+            </div>
+
+            <button class='btn btn-outline-info col-1 offset-md-2'>
+                <Link class='text-secondary' to='/login'>Login</Link>
             </button>
 
-            <button id="reg-bt">
-                <Link to='/register' id='reglink'>Sign up</Link>
+            <button class='btn btn-outline-info col-1'>
+                <Link class='text-secondary' to='/register'>Sign up</Link>
             </button>
-
-
 
         </div>
     )
 }
-
-
-// return (
-//     <div >
-//         <nav  id="NavBar">
-//             <ul>
-
-//                 <li>
-//                     <Link to='/tutorial'>Tutorial</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to='/about'>About us</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to='/contact'>Contact</Link>
-//                 </li>
-
-//                 <button id="login-bt">
-//                     <Link to='/login' id="loginlink">Login</Link>
-//                 </button>
-
-//                 <button id="reg-bt">
-//                     <Link to='/register' id='reglink'>Sign up</Link>
-//                 </button>
-//             </ul>
-//         </nav>
-//     </div>
-// )

@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 import './css/login-signup.css'
-import landpageimg from './imgs/Mobile-login-Cristina.jpg'
 import { Link } from 'react-router-dom';
+import illus from './imgs/illustrate.jpg'
 
 export default function Register() {
   return (
@@ -15,14 +15,8 @@ export default function Register() {
         <div className="row">
           <div className='col-md-1'></div>
           <div className="col-md-4" id='left'>
-            <h2>Create an account.</h2>
-            <h5 id='logintext'> Let's set up your account. </h5>
-            <div>
-              <input type='text' id='a'
-                placeholder="Email"
-                name='email' required />
-            </div>
-
+            <h2>Create an account</h2>
+            <h5 id='logintext'> Let's set up your account</h5>
             <div>
               <input type='text' id='a'
                 placeholder="Username"
@@ -43,21 +37,17 @@ export default function Register() {
               {/* <a href='#'>Forgot password</a> */}
             </div>
             <input type='submit' value='Sign up now' id='subbutton' />
-            <br />
             <hr />
-            <br />
             <div>
               Already have an account?
               <Link to='/login' id="loginbt">Login here</Link>
             </div>
           </div>
 
+          <img src={illus} class='col-7'></img>
 
-          <div className="col-md-7">
-            <img src={landpageimg} alt="Something" id='img' />
-          </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }

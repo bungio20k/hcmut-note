@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
 import './css/home.css'
-import landpageimg from './imgs/Mobile-login-Cristina.jpg'
+import illus from './imgs/illustrate.jpg'
 
 export default function Home() {
     return (
@@ -17,7 +17,7 @@ export default function Home() {
                         <h2 id='h2text'>A workspace for  </h2>
                         <h2>HCMUT-er</h2>
                         <h5 id='hometext'> More than just a notes organiser, we provide an entire workspace for those who hustle hard</h5>
-                        <Link to='/register' >
+                        <Link to='/register'>
                             <input type='submit' value='Get started now' id='getbtt' to='/login' />
                         </Link>
                         <br />
@@ -29,11 +29,9 @@ export default function Home() {
                         </div>
 
                     </div>
-                    <div className="col-md-7">
-                        <img src={landpageimg} alt="Something" id='img' />
-                    </div>
+                    <img src={illus} class='col-7'></img>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

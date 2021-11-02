@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 import {
   Note,
@@ -136,11 +137,15 @@ export default function Notification() {
   const [currentDay, changeDay] = useState(new Date());
 
   return (
-    <div class='container' id='notification'>
-      <div class='row w-75' id='navigation-bar'>
-        <img src={Logo} class='col-1'></img>
-        <Search />
-        <User />
+    <div id='notification'>
+      <div class='container-fluid bg-info' id='navigation-bar'>
+        <div class='row'>
+          <Link to='/notepage' class='col-1'>
+            <img src={Logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-7' />
+          </Link>
+          <Search />
+          <User />
+        </div>
       </div>
       <div class='row'>
         <Sidebar />

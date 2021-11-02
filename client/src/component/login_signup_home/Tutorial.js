@@ -4,7 +4,10 @@ export default function Tutorial() {
   return (
     <div>
       <Navbar />
-      <h1>Tutorial</h1>
+      <br />
+      <br />
+      <br />
+      <h1 class='text-center text-info'>This feature is still in development, please come back later!</h1>
     </div>
   );
 }
