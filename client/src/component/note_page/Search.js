@@ -1,19 +1,21 @@
-import React from 'react'
+import React from "react";
 
 const Search = ({ handleSearchNote }) => {
-    return (
-        <div class="input-group rounded w-75">
-            <input type="search" class="form-control rounded col" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon"
-                onChange={(event) =>
-                    handleSearchNote(event.target.value)
-                }
-            />
-            <span class="input-group-text border-0 col-1" id="search-addon">
-                <i class="bi bi-search"></i>
-            </span>
-        </div>
-    )
-}
+  return (
+    <div className="input-group rounded w-75">
+      <input
+        type="search"
+        className="form-control rounded col"
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        onChange={(event) => handleSearchNote(event.target.value)}
+      />
+      <span className="input-group-text border-0 col-1" id="search-addon">
+        <i className="bi bi-search"></i>
+      </span>
+    </div>
+  );
+};
 
-export default Search
+export default Search;

@@ -147,22 +147,31 @@ export default function Notification() {
           <User />
         </div>
       </div>
-      <div class='row'>
-        <Sidebar />
-        <div class='col-8'>
-          <h3 class='text-white bg-info rounded-pill col-4'>
-            <i class="bi bi-alarm-fill"></i>
-            {(currentDay.toDateString() == new Date().toDateString()) ? 'Today' : currentDay.toDateString()}
-          </h3>
-          <div class='row'>
+      <br />
+      <div class='container-fluid border border-info'>
+        <div class='row'>
+          <Sidebar />
+          <div class='col-7 border border-info'>
+            {
+              (currentDay.toDateString() == new Date().toDateString()) ?
+                <button class='btn text-light btn-info rounded-pill'>
+                  <i class="bi bi-alarm-fill"> </i>
+                  Today
+                </button>
+                :
+                <button class='btn text-light btn-info rounded-pill'>
+                  <i class="bi bi-alarm-fill"> </i>
+                  {currentDay.toDateString()}
+                </button>
+            }
             {todayNoteData.map(note => (<Note data={note} />))}
           </div>
-        </div>
-        <div class='col'>
-          <Calendar
-            value={currentDay}
-            onChange={changeDay}
-          />
+          <div class='col'>
+            <Calendar
+              value={currentDay}
+              onChange={changeDay}
+            />
+          </div>
         </div>
       </div>
 
