@@ -10,7 +10,6 @@ import User from "../navigation_sidebar/User";
 import Logo from "../login_signup_home/imgs/logo.jpg";
 import Note from "./Note";
 import Sidebar from "../navigation_sidebar/Sidebar";
-import Popper from "popper.js";
 
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
@@ -170,25 +169,8 @@ export default function NotePage() {
           <img src={Logo} className="col-1" style={{ height: "30px" }}></img>
           <Search handleSearchNote={setSearchText} />
 
-          <div className="row top-buffer">
-        <div className="col">
-            <div className="dropdown">
-                <button 
-                    className="btn btn-secondary dropdown-toggle" 
-                    type="button" 
-                    id="dropdownMenuButton" 
-                    data-toggle="dropdown" 
-                    aria-haspopup="true">
-                    Dropdown
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" href="#nogo">Item 1</a>
-                    <a className="dropdown-item" href="#nogo">Item 2</a>
-                    <a className="dropdown-item" href="#nogo">Item 3</a>
-                </div>
-            </div>
-        </div>
-    </div>
+          
+          
         </div>
       </div>
       <div className="container-fluid">
