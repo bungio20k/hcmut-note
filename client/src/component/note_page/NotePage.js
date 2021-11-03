@@ -26,7 +26,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F6522F",
     },
 
     {
@@ -37,7 +37,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#99F62F",
     },
 
     {
@@ -48,7 +48,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2FF6F4",
     },
 
     {
@@ -59,7 +59,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2FF6F4",
     },
 
     {
@@ -70,7 +70,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2F46F6",
     },
 
     {
@@ -81,7 +81,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F62FE9",
     },
 
     {
@@ -92,7 +92,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F6E92F",
     },
 
     {
@@ -103,7 +103,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F6E62F",
     },
 
     {
@@ -114,7 +114,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F6982F",
     },
 
     {
@@ -125,7 +125,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#C9F62F",
     },
 
     {
@@ -136,7 +136,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#9F2FF6",
     },
 
     {
@@ -147,7 +147,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F62F8F",
     },
 
     {
@@ -158,7 +158,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F6CB2F",
     },
 
     {
@@ -169,7 +169,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#45F62F",
     },
 
  
@@ -182,7 +182,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2FCAF6",
     },
 
     {
@@ -193,7 +193,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F62FBC",
     },
 
     {
@@ -204,7 +204,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2FF649",
     },
 
     {
@@ -215,7 +215,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#F65F2F",
     },
 
     {
@@ -226,7 +226,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "y",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2FF697",
     },
 
     {
@@ -237,7 +237,7 @@ export default function NotePage() {
       tag: "task3",
       pinned: "n",
       content: "lorem ipsum dolor sit amet, consectetur",
-      color: "#ffffff",
+      color: "#2F4FF6",
     },
   ]);
 

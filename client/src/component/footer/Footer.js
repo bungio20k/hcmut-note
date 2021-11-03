@@ -8,13 +8,13 @@ const Footer = () => {
         <div className="row">
           {/* Column1 */}
           <div className="col">
-            <h4>MEMBER</h4>
-            <h4 className="list-unstyled">
+            <h6>MEMBER</h6>
+            <h6 className="list-unstyled">
               <li>Dinh Nhu Tan</li>
               <li>Dao Van Tien Quyen</li>
               <li>Tran Toan</li>
               <li>Le Duc An</li>
-            </h4>
+            </h6>
           </div>
           
         </div>
