@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 
 import './css/login-signup.css'
 import illus from './imgs/illustrate.jpg'
+import Footer from '../footer/Footer';
 
 export default function Login() {
 
@@ -43,6 +44,8 @@ export default function Login() {
                     <img src={illus} class='col-7' id='illus'></img>
                 </div>
             </div>
+            <br />
+        <Footer />
         </div>
     )
 }

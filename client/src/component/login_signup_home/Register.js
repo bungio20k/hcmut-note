@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import './css/login-signup.css'
 import { Link } from 'react-router-dom';
 import illus from './imgs/illustrate.jpg'
+import Footer from '../footer/Footer';
 
 export default function Register() {
   return (
@@ -50,6 +51,8 @@ export default function Register() {
 
         </div>
       </div>
+      <br />
+        <Footer />
     </div>
   )
 }

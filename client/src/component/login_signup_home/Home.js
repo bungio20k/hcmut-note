@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar'
 import './css/home.css'
 import illus from './imgs/illustrate.jpg'
+import Footer from '../footer/Footer';
 
 export default function Home() {
     return (
@@ -34,6 +35,8 @@ export default function Home() {
                     <img src={illus} class='col-7'></img>
                 </div>
             </div>
+            <br />
+        <Footer />
         </div>
     )
 }
