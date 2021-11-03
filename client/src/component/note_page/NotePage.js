@@ -10,6 +10,7 @@ import User from "../navigation_sidebar/User";
 import Logo from "../login_signup_home/imgs/logo.jpg";
 import Note from "./Note";
 import Sidebar from "../navigation_sidebar/Sidebar";
+import Footer from "../footer/Footer";
 
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
@@ -17,6 +18,28 @@ import "suneditor/dist/css/suneditor.min.css";
 export default function NotePage() {
   //
   const [notes, setNotes] = useState([
+       {
+      id: nanoid(),
+      title: "software",
+      text: "task3",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "chemistry",
+      text: "midterm",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
     {
       id: nanoid(),
       title: "network",
@@ -32,6 +55,162 @@ export default function NotePage() {
       id: nanoid(),
       title: "dbs",
       text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "network",
+      text: "homework",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "dbs",
+      text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "network",
+      text: "homework",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "dbs",
+      text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "network",
+      text: "homework",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "dbs",
+      text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "network",
+      text: "homework",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "dbs",
+      text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "network",
+      text: "homework",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "dbs",
+      text: "quiz",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+ 
+
+    {
+      id: nanoid(),
+      title: "software",
+      text: "task3",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "chemistry",
+      text: "midterm",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "n",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "software",
+      text: "task3",
+      date: "October 26th 2021",
+      tag: "task3",
+      pinned: "y",
+      content: "lorem ipsum dolor sit amet, consectetur",
+      color: "#ffffff",
+    },
+
+    {
+      id: nanoid(),
+      title: "chemistry",
+      text: "midterm",
       date: "October 26th 2021",
       tag: "task3",
       pinned: "n",
@@ -436,6 +615,8 @@ export default function NotePage() {
           </div>
         </div>
       </div>
+      <br />
+        <Footer />
     </>
   );
 }
