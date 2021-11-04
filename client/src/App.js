@@ -16,6 +16,7 @@ import {
 import WorkSpace from "./component/WorkSpace";
 
 import { nanoid } from "nanoid";
+
 const NOTES_DATA = [
   {
     id: nanoid(),
