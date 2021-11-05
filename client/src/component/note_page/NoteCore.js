@@ -36,10 +36,11 @@ export default function NoteCore(props) {
             title: "",
             text: "",
             date: "",
+            time: "",
             tag: "",
             content: "",
             pinned: "n",
-            color: "#ffffff",
+            color: "#000000",
         });
     };
 
@@ -49,10 +50,11 @@ export default function NoteCore(props) {
             title: "",
             text: "",
             date: "",
+            time: "",
             tag: "",
             content: "",
             pinned: "n",
-            color: "#ffffff",
+            color: "#000000",
         });
         props.setEditStatus({ status: false, id: "" });
     };
@@ -119,7 +121,15 @@ export default function NoteCore(props) {
                                 value={props.note.date}
                                 onChange={changeHandler}
                             />
-                            <div className="row">
+                            <label htmlFor="time">Time</label>
+                            <input
+                                name="time"
+                                type="time"
+                                className="form-control"
+                                id="time"
+                                value={props.note.time}
+                                onChange={changeHandler}
+                            />                           <div className="row">
                                 <div className="col-lg-11">
                                     <label htmlFor="tag">Tag</label>
                                     <input

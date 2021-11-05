@@ -27,36 +27,36 @@ const todayNoteData = [{
   text: 'short description',
   content: 'Complete homeworks for sofware engineering',
   date: 'October 26th 2021',
-  time: '08:00 AM',
+  time: '08:00',
   tag: 'Study',
-  color: '#ffffff'
+  color: '#16a085'
 }, {
   id: nanoid(),
   title: 'Battlepass',
   text: 'short description',
   content: 'Complete battlepass daily mission',
   date: 'October 26th 2021',
-  time: '10:00 AM',
+  time: '10:00',
   tag: 'Gaming',
-  color: '#ffffff'
+  color: '#000000'
 }, {
   id: nanoid(),
   title: 'Prepare for lunch',
   text: 'short description',
   content: 'Buy some pork and rosemary for luch',
   date: 'October 26th 2021',
-  time: '10:30 AM',
+  time: '10:30',
   tag: 'Grocery',
-  color: '#ffffff'
+  color: '#000000'
 }, {
   id: nanoid(),
   title: 'Workout',
   text: 'short description',
   content: '100 push up go brrr',
   date: 'October 26th 2021',
-  time: '04:30 AM',
+  time: '04:30',
   tag: 'Workout',
-  color: '#ffffff'
+  color: '#000000'
 }]
 
 const weeklyNoteData = {
@@ -69,7 +69,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag1',
-      color: '#ffffff'
+      color: '#000000'
     }
   ],
   'Monday': [
@@ -81,7 +81,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag2',
-      color: '#ffffff'
+      color: '#000000'
     }
   ],
   'Tuesday': [
@@ -93,7 +93,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag3',
-      color: '#ffffff'
+      color: '#000000'
     },
     {
       id: nanoid(),
@@ -103,7 +103,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag3',
-      color: '#ffffff'
+      color: '#000000'
     }
   ],
   'Wednesday': [
@@ -115,7 +115,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag4',
-      color: '#ffffff'
+      color: '#000000'
     }
   ],
   'Thursday': [
@@ -127,7 +127,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag3',
-      color: '#ffffff'
+      color: '#000000'
     },
   ],
   'Friday': [
@@ -139,7 +139,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag2',
-      color: '#ffffff'
+      color: '#000000'
     },
     {
       id: nanoid(),
@@ -149,7 +149,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag2',
-      color: '#ffffff'
+      color: '#000000'
     },
     {
       id: nanoid(),
@@ -159,7 +159,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag2',
-      color: '#ffffff'
+      color: '#000000'
     },
     {
       id: nanoid(),
@@ -169,7 +169,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag2',
-      color: '#ffffff'
+      color: '#000000'
     }
   ],
   'Saturday': [
@@ -181,7 +181,7 @@ const weeklyNoteData = {
       date: 'October 26th 2021',
       time: '10:00 AM',
       tag: 'Tag1',
-      color: '#ffffff'
+      color: '#000000'
     }
   ]
 };
@@ -193,6 +193,7 @@ export default function Notification() {
 
   const [notes, setNotes] = useState(todayNoteData);
 
+
   const [note, setNote] = useState({
     id: nanoid(),
     title: "",
@@ -201,7 +202,7 @@ export default function Notification() {
     tag: "",
     content: "",
     pinned: "n",
-    color: "#ffffff",
+    color: "#000000",
   });
 
   const [editStatus, setEditStatus] = useState({
@@ -257,9 +258,11 @@ export default function Notification() {
           <i class="bi bi-lightbulb"></i>
         </button>
 
-        <button class='btn btn-outline-light col-1'>
-          <i class="bi bi-box-arrow-in-left"></i>
-        </button>
+        <Link to='/'>
+          <button class='btn btn-outline-light col-1'>
+            <i class="bi bi-box-arrow-in-left"></i>
+          </button>
+        </Link>
 
       </div>
       <br />
@@ -282,13 +285,13 @@ export default function Notification() {
             <div class='col d-grid gap-2 offset-md-2' id='note-list'>
               {notes.map(note => (
                 <div key={note.id}>
-                <Note
-                  note={note}
-                  del={deleteNote}
-                  edit={editNote}
-                  pinHandler={pinHandler}
-                  detail={seeDetailNote}
-                />
+                  <Note
+                    note={note}
+                    del={deleteNote}
+                    edit={editNote}
+                    pinHandler={pinHandler}
+                    detail={seeDetailNote}
+                  />
                 </div>
               ))}
             </div>
@@ -321,7 +324,9 @@ export default function Notification() {
           {week.map(day => (
             <div class='col border'>
               <h5 class='text-info text-center'>{day}</h5>
-              {weeklyNoteData[day].map(note => (<SmallNote data={note} />))}
+              {weeklyNoteData[day].map(note => (
+                <SmallNote data={note}/>
+              ))}
             </div>
           ))}
         </div>

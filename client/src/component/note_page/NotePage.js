@@ -24,7 +24,7 @@ export default function NotePage(props) {
     tag: "",
     content: "",
     pinned: "n",
-    color: "#ffffff",
+    color: "#000000",
   });
 
   const [editStatus, setEditStatus] = useState({
@@ -77,9 +77,11 @@ export default function NotePage(props) {
             <i class="bi bi-lightbulb"></i>
           </button>
 
-          <button class='btn btn-outline-light col-1'>
-            <i class="bi bi-box-arrow-in-left"></i>
-          </button>
+          <Link to='/'>
+            <button class='btn btn-outline-light col-1'>
+              <i class="bi bi-box-arrow-in-left"></i>
+            </button>
+          </Link>
 
         </div>
       </div>
@@ -99,8 +101,8 @@ export default function NotePage(props) {
                 >
                   Add note <i class="bi bi-plus-circle-fill"></i>
                 </button>
-                <NoteCore 
-                  note={note} setNote={setNote} 
+                <NoteCore
+                  note={note} setNote={setNote}
                   editStatus={editStatus} setEditStatus={setEditStatus}
                   setNotes={props.setNotes} />
               </div>
