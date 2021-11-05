@@ -7,7 +7,9 @@ export default function Tutorial() {
       <br />
       <br />
       <br />
-      <h1 class='text-center text-info'>This feature is still in development, please come back later!</h1>
+      <h1 className="text-center text-info">
+        This feature is still in development, please come back later!
+      </h1>
     </div>
   );
 }

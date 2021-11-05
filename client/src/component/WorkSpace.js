@@ -7,55 +7,49 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import Calendar from "react-calendar";
 import { events } from "./workspace/index";
 
+import { Sidebar, Search } from "./navigation_sidebar/All";
+//
+import Logo from "./login_signup_home/imgs/logo.jpg";
+
 const WorkSpace = () => {
   const [currentDay, changeDay] = useState(new Date());
   return (
     <>
-      <div className="header bg-light" style={{ minHeight: "60px" }}>
-        <h1 className="text-center">Header</h1>
-      </div>
-      <div className="content container-fluid pe-0">
-        <div className="row g-2">
-          <div
-            className="side-bar col-lg-1 bg-light"
-            style={{ height: "100vh" }}
-          >
-            <h1>Side bar</h1>
+      <div className="header">
+        <div className="container-fluid bg-info" id="navbar">
+          <Link to="/notepage">
+            <img
+              src={Logo}
+              alt="logo-note"
+              id="logoimg"
+              className="border border-info rounded-circle col-1"
+            />
+          </Link>
+
+          <div className="btn-group col-6 offset-md-1">
+            <Search />
           </div>
+
+          <button className="btn btn-outline-light col-1 offset-md-2">
+            <i className="bi bi-lightbulb"></i>
+          </button>
+
+          <Link to="/">
+            <button className="btn btn-outline-light col-1">
+              <i className="bi bi-box-arrow-in-left"></i>
+            </button>
+          </Link>
+        </div>
+      </div>
+      <br />
+      <div className="content container-fluid pe-0">
+        <div className="row">
+          <Sidebar />
           <div className="main-content col-lg-11 mt-4">
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-5">
                   <div className="container p-0">
-                    <div className="row g-2">
-                      <div className="col-lg-6">
-                        <Link to="/notepage">
-                          <button className="btn btn-primary w-100">
-                            Note Page
-                          </button>
-                        </Link>
-                      </div>
-                      <div className="col-lg-6">
-                        <button
-                          className="btn btn-primary w-100"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#calender-workspace"
-                        >
-                          Show Calander
-                        </button>
-                      </div>
-                      <div
-                        className="col-lg-12 collapse"
-                        id="calender-workspace"
-                      >
-                        <Calendar
-                          value={currentDay}
-                          onChange={changeDay}
-                          className="mx-auto"
-                        />
-                      </div>
-                    </div>
                     <span
                       className="badge bg-info  my-3"
                       style={{ maxWidth: "fit-content", textAlign: "left" }}

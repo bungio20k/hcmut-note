@@ -110,3 +110,7 @@ textarea:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
+
+#detail-note-body img {
+  max-width: 100%;
+}

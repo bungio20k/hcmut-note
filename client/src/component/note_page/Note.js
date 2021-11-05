@@ -1,9 +1,9 @@
 const Note = ({ note, del, edit, pinHandler, detail }) => {
-  const { id, title, text, date, pinned, color, time, tag} = note;
+  const { id, title, text, date, pinned, color, time, tag } = note;
   const styleCard = {
     position: "relative",
-    'border-color': color,
-    color: color
+    "border-color": color,
+    color: color,
   };
   const styleEditIcon = {
     position: "absolute",
@@ -56,8 +56,12 @@ const Note = ({ note, del, edit, pinHandler, detail }) => {
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{text}</p>
         <p className="card-text">{date}</p>
-        <p class='badge btn-secondary btn-sm rounded-pill'><i class="bi bi-alarm"></i> {time}</p>
-        <p class='badge btn-secondary btn-sm rounded-pill'><i class="bi bi-tags"></i> {tag}</p>
+        <p className="badge btn-secondary btn-sm rounded-pill">
+          <i className="bi bi-alarm"></i> {time}
+        </p>
+        <p className="badge btn-secondary btn-sm rounded-pill">
+          <i className="bi bi-tags"></i> {tag}
+        </p>
       </div>
       <i
         role="button"

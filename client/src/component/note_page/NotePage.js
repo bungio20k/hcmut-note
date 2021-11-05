@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 //
 import { useState } from "react";
 
-import Search from './Search';
+import Search from "./Search";
 //
 import Logo from "../login_signup_home/imgs/logo.jpg";
 import Note from "./Note";
 import Sidebar from "../navigation_sidebar/Sidebar";
 import Footer from "../footer/Footer";
-import NoteCore from './NoteCore';
+import NoteCore from "./NoteCore";
 
 import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
@@ -63,26 +63,29 @@ export default function NotePage(props) {
   return (
     <>
       <div className="header">
-        <div class='container-fluid bg-info' id='navbar'>
-
-          <Link to='/notepage'>
-            <img src={Logo} alt='logo-note' id='logoimg' class='border border-info rounded-circle col-1' />
+        <div className="container-fluid bg-info" id="navbar">
+          <Link to="/notepage">
+            <img
+              src={Logo}
+              alt="logo-note"
+              id="logoimg"
+              className="border border-info rounded-circle col-1"
+            />
           </Link>
 
-          <div class='btn-group col-6 offset-md-1'>
+          <div className="btn-group col-6 offset-md-1">
             <Search handleSearchNote={setSearchText} />
           </div>
 
-          <button class='btn btn-outline-light col-1 offset-md-2'>
-            <i class="bi bi-lightbulb"></i>
+          <button className="btn btn-outline-light col-1 offset-md-2">
+            <i className="bi bi-lightbulb"></i>
           </button>
 
-          <Link to='/'>
-            <button class='btn btn-outline-light col-1'>
-              <i class="bi bi-box-arrow-in-left"></i>
+          <Link to="/">
+            <button className="btn btn-outline-light col-1">
+              <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>
-
         </div>
       </div>
       <br />
@@ -99,12 +102,15 @@ export default function NotePage(props) {
                   data-bs-target="#modal-note"
                   id="addnote"
                 >
-                  Add note <i class="bi bi-plus-circle-fill"></i>
+                  Add note <i className="bi bi-plus-circle-fill"></i>
                 </button>
                 <NoteCore
-                  note={note} setNote={setNote}
-                  editStatus={editStatus} setEditStatus={setEditStatus}
-                  setNotes={props.setNotes} />
+                  note={note}
+                  setNote={setNote}
+                  editStatus={editStatus}
+                  setEditStatus={setEditStatus}
+                  setNotes={props.setNotes}
+                />
               </div>
 
               <span className="badge bg-info my-2">Pinned</span>
