@@ -3,18 +3,77 @@ import { Link } from "react-router-dom";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-
 import Calendar from "react-calendar";
 import { events } from "./workspace/index";
-
 import { Sidebar, Search } from "./navigation_sidebar/All";
-//
 import Logo from "./login_signup_home/imgs/logo.jpg";
+import Note from "./note_page/Note";
+import NoteCore from "./note_page/NoteCore";
+import notelist from "./workspace/notes";
+import { nanoid } from "nanoid";
 
 const WorkSpace = () => {
   const [currentDay, changeDay] = useState(new Date());
+  const [notes, setNotes] = useState(notelist);
+  const [note, setNote] = useState({
+    id: nanoid(),
+    title: "",
+    text: "",
+    date: "",
+    tag: "",
+    content: "",
+    pinned: "n",
+    color: "#000000",
+  });
+
+  const [editStatus, setEditStatus] = useState({
+    status: false,
+    id: "",
+  });
+
+  const editNote = (id) => {
+    console.log(id);
+    setEditStatus({
+      status: true,
+      id: id,
+    });
+    setNote(notes.find((note) => note.id === id));
+    document.getElementById("addnote").click();
+  };
+
+  const deleteNote = (id) => {
+    setNotes((prev) => prev.filter((note) => id !== note.id));
+  };
+
+  const seeDetailNote = (id) => {
+    setNote(notes.find((note) => note.id === id));
+  };
+
+  const pinHandler = (id, status) => {
+    setNotes((prev) => {
+      prev[prev.findIndex((note) => note.id === id)].pinned =
+        status === "n" ? "y" : "n";
+      return [...prev];
+    });
+  };
   return (
     <>
+      <button
+        type="button"
+        className="btn btn-info mb-2 text-secondary rounded-pill d-none"
+        data-bs-toggle="modal"
+        data-bs-target="#modal-note"
+        id="addnote"
+      >
+        Add note <i className="bi bi-plus-circle-fill"></i>
+      </button>
+      <NoteCore
+        note={note}
+        setNote={setNote}
+        editStatus={editStatus}
+        setEditStatus={setEditStatus}
+        setNotes={setNotes}
+      />
       <div className="header">
         <div className="container-fluid bg-info" id="navbar">
           <Link to="/notepage">
@@ -57,24 +116,20 @@ const WorkSpace = () => {
                       Up coming
                     </span>
                     <div className="row g-2">
-                      <div className="col-lg-6">
-                        <div className="card">
-                          <div className="card-body">
-                            <h5 className="card-title">Midterm FOC</h5>
-                            <p className="card-text">exam.hcmut.edu.vn</p>
-                            <p className="card-text">October 9, 2021 1:00 PM</p>
+                      {notes
+                        .filter((item) => item.type === "1")
+                        .map((item) => (
+                          <div className="col-lg-6" key={item.id}>
+                            <Note
+                              note={item}
+                              del={deleteNote}
+                              edit={editNote}
+                              pinHandler={pinHandler}
+                              detail={seeDetailNote}
+                              displayTime={true}
+                            />
                           </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="card">
-                          <div className="card-body">
-                            <h5 className="card-title">Midterm FOC</h5>
-                            <p className="card-text">exam.hcmut.edu.vn</p>
-                            <p className="card-text">October 9, 2021 1:00 PM</p>
-                          </div>
-                        </div>
-                      </div>
+                        ))}
                     </div>
                     <span
                       className="badge bg-info my-3"
@@ -83,19 +138,20 @@ const WorkSpace = () => {
                       Term 211
                     </span>
                     <div className="row g-2">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div className="col-lg-6" key={i}>
-                          <div className="card">
-                            <div className="card-body">
-                              <h5 className="card-title">Midterm FOC</h5>
-                              <p className="card-text">exam.hcmut.edu.vn</p>
-                              <p className="card-text">
-                                October 9, 2021 1:00 PM
-                              </p>
-                            </div>
+                      {notes
+                        .filter((item) => item.type === "2")
+                        .map((item) => (
+                          <div className="col-lg-6" key={item.id}>
+                            <Note
+                              note={item}
+                              del={deleteNote}
+                              edit={editNote}
+                              pinHandler={pinHandler}
+                              detail={seeDetailNote}
+                              displayTime={true}
+                            />
                           </div>
-                        </div>
-                      ))}
+                        ))}
                     </div>
                   </div>
                   <span
@@ -178,22 +234,23 @@ const WorkSpace = () => {
                       className="badge bg-info my-3"
                       style={{ maxWidth: "fit-content", textAlign: "left" }}
                     >
-                      Term 211
+                      Assignment
                     </span>
                     <div className="row g-2">
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                        <div className="col-lg-6" key={i}>
-                          <div className="card">
-                            <div className="card-body">
-                              <h5 className="card-title">Midterm FOC</h5>
-                              <p className="card-text">exam.hcmut.edu.vn</p>
-                              <p className="card-text">
-                                October 9, 2021 1:00 PM
-                              </p>
-                            </div>
+                      {notes
+                        .filter((item) => item.type === "3")
+                        .map((item) => (
+                          <div className="col-lg-6" key={item.id}>
+                            <Note
+                              note={item}
+                              del={deleteNote}
+                              edit={editNote}
+                              pinHandler={pinHandler}
+                              detail={seeDetailNote}
+                              displayTime={true}
+                            />
                           </div>
-                        </div>
-                      ))}
+                        ))}
                     </div>
                   </div>
 
