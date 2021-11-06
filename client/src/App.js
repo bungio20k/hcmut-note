@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {useState} from 'react'
+import { useState } from 'react'
 
 import {
   About,
@@ -14,6 +14,7 @@ import {
 } from "./component/All";
 
 import WorkSpace from "./component/WorkSpace";
+import SearchNote from "./component/SearchNote";
 
 import { nanoid } from "nanoid";
 
@@ -22,7 +23,7 @@ const NOTES_DATA = [
     id: nanoid(),
     title: "software",
     text: "task3",
-    date: "October 26th 2021", 
+    date: "October 26th 2021",
     time: "02:00",
     tag: "tag1",
     pinned: "y",
@@ -56,7 +57,7 @@ const NOTES_DATA = [
     id: nanoid(),
     title: "dbs",
     text: "quiz",
-    date: "October 26th 2021", time: "02:00", 
+    date: "October 26th 2021", time: "02:00",
     tag: "tag1",
     pinned: "n",
     content: "lorem ipsum dolor sit amet, consectetur",
@@ -244,6 +245,7 @@ const NOTES_DATA = [
 
 export default function App() {
   const [notes, setNotes] = useState(NOTES_DATA);
+  const [searchText, changeText] = useState('');
 
   return (
     <Router>
@@ -270,15 +272,19 @@ export default function App() {
           </Route>
 
           <Route path="/notepage">
-            <NotePage notes={notes} setNotes={setNotes}/>
+            <NotePage notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText}/>
           </Route>
 
           <Route path="/notification">
-            <Notification />
+            <Notification searchText={searchText} changeText={changeText}/>
           </Route>
 
           <Route path="/workspace">
-            <WorkSpace />
+            <WorkSpace searchText={searchText} changeText={changeText}/>
+          </Route>
+
+          <Route path='/search'>
+            <SearchNote notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText}/>
           </Route>
 
           <Route path="/">

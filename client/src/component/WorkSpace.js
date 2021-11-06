@@ -12,7 +12,7 @@ import NoteCore from "./note_page/NoteCore";
 import notelist from "./workspace/notes";
 import { nanoid } from "nanoid";
 
-const WorkSpace = () => {
+const WorkSpace = (props) => {
   const [currentDay, changeDay] = useState(new Date());
   const [notes, setNotes] = useState(notelist);
   const [note, setNote] = useState({
@@ -86,7 +86,7 @@ const WorkSpace = () => {
           </Link>
 
           <div className="btn-group col-6 offset-md-1">
-            <Search />
+            <Search searchText={props.searchText} changeText={props.changeText}/>
           </div>
 
           <button className="btn btn-outline-light col-1 offset-md-2">

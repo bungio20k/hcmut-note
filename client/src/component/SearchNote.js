@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 //
 import { useState } from "react";
 
-import Search from "../navigation_sidebar/Search";
+import Search from "./navigation_sidebar/Search";
 //
-import Logo from "../login_signup_home/imgs/logo.jpg";
-import Note from "./Note";
-import Sidebar from "../navigation_sidebar/Sidebar";
-import Footer from "../footer/Footer";
-import NoteCore from "./NoteCore";
+import Logo from "./login_signup_home/imgs/logo.jpg";
+import Note from "./note_page/Note";
+import Sidebar from "./navigation_sidebar/Sidebar";
+import Footer from "./footer/Footer";
+import NoteCore from "./note_page/NoteCore";
 
 import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
 
-export default function NotePage(props) {
+export default function SearchNote(props) {
   //
   const [note, setNote] = useState({
     id: nanoid(),
@@ -58,8 +58,6 @@ export default function NotePage(props) {
     });
   };
 
-  const [searchText, setSearchText] = useState("");
-  //
   return (
     <>
       <div className="header">
@@ -95,15 +93,7 @@ export default function NotePage(props) {
           <div className="col-lg-11">
             <div className="container-fluid">
               <div>
-                <button
-                  type="button"
-                  className="btn btn-info mb-2 text-secondary rounded-pill"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modal-note"
-                  id="addnote"
-                >
-                  Add note <i className="bi bi-plus-circle-fill"></i>
-                </button>
+
                 <NoteCore
                   note={note}
                   setNote={setNote}
@@ -118,8 +108,10 @@ export default function NotePage(props) {
                 {props.notes
                   .filter(
                     (note) =>
-                      (note.title.toLowerCase().includes(searchText) ||
-                        note.text.toLowerCase().includes(searchText)) &&
+                      (note.title.toLowerCase().includes(props.searchText) ||
+                        note.text.toLowerCase().includes(props.searchText) ||
+                        note.tag.toLowerCase().includes(props.searchText)) 
+                        &&
                       note.pinned.includes("y")
                   )
                   .map((note) => (
@@ -142,8 +134,10 @@ export default function NotePage(props) {
                 {props.notes
                   .filter(
                     (note) =>
-                      (note.title.toLowerCase().includes(searchText) ||
-                        note.text.toLowerCase().includes(searchText)) &&
+                      (note.title.toLowerCase().includes(props.searchText) ||
+                        note.text.toLowerCase().includes(props.searchText) ||
+                        note.tag.toLowerCase().includes(props.searchText)) 
+                      &&
                       note.pinned.includes("n")
                   )
                   .map((note) => (
@@ -159,6 +153,15 @@ export default function NotePage(props) {
                     </div>
                   ))}
               </div>
+              <button
+                type="button"
+                className="btn btn-info mb-2 text-secondary rounded-pill invisible"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-note"
+                id="addnote"
+              >
+                Add note <i className="bi bi-plus-circle-fill"></i>
+              </button>
             </div>
           </div>
         </div>

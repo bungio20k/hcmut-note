@@ -196,7 +196,7 @@ const week = [
   "Saturday",
 ];
 
-export default function Notification() {
+export default function Notification(props) {
   const [currentDay, changeDay] = useState(new Date());
 
   const [notes, setNotes] = useState(todayNoteData);
@@ -264,7 +264,7 @@ export default function Notification() {
         </Link>
 
         <div className="btn-group col-6 offset-md-1">
-          <Search />
+          <Search searchText={props.searchText} changeText={props.changeText}/>
         </div>
 
         <button className="btn btn-outline-light col-1 offset-md-2">
