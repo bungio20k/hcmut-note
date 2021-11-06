@@ -130,6 +130,7 @@ export default function NotePage(props) {
                         edit={editNote}
                         pinHandler={pinHandler}
                         detail={seeDetailNote}
+                        displayTime={false}
                       />
                     </div>
                   ))}
@@ -153,6 +154,7 @@ export default function NotePage(props) {
                         edit={editNote}
                         pinHandler={pinHandler}
                         detail={seeDetailNote}
+                        displayTime={false}
                       />
                     </div>
                   ))}

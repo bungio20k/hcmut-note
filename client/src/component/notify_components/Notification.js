@@ -302,6 +302,7 @@ export default function Notification() {
                     edit={editNote}
                     pinHandler={pinHandler}
                     detail={seeDetailNote}
+                    displayTime={true}
                   />
                 </div>
               ))}

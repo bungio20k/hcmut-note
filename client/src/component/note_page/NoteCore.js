@@ -227,6 +227,7 @@ export default function NoteCore(props) {
                 onClick={closeHandler}
               ></button>
             </div>
+            <h6 class='font-weight-light text-center text-secondary'>{props.note.text}</h6>
             <div
               className="modal-body"
               id="detail-note-body"
@@ -240,6 +241,7 @@ export default function NoteCore(props) {
                   <span className="badge bg-primary">{props.note.tag}</span>
                 </div>
                 <p className="ms-3 mb-0">{props.note.date}</p>
+                <p className="ms-3 mb-0">{props.note.time}</p>
               </div>
               <button
                 type="button"

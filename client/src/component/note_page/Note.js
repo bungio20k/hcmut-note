@@ -1,4 +1,4 @@
-const Note = ({ note, del, edit, pinHandler, detail }) => {
+const Note = ({ note, del, edit, pinHandler, detail, displayTime}) => {
   const { id, title, text, date, pinned, color, time, tag } = note;
   const styleCard = {
     position: "relative",
@@ -22,7 +22,7 @@ const Note = ({ note, del, edit, pinHandler, detail }) => {
   };
   return (
     <div className="card card-note" style={styleCard}>
-      {pinned === "n" ? (
+      {(pinned === "n") ? (
         <i
           role="button"
           className="bi bi-pin"
@@ -56,9 +56,11 @@ const Note = ({ note, del, edit, pinHandler, detail }) => {
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{text}</p>
         <p className="card-text">{date}</p>
+        {displayTime && (
         <p className="badge btn-secondary btn-sm rounded-pill">
           <i className="bi bi-alarm"></i> {time}
         </p>
+        )}
         <p className="badge btn-secondary btn-sm rounded-pill">
           <i className="bi bi-tags"></i> {tag}
         </p>
