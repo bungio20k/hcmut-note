@@ -102,12 +102,14 @@ textarea:focus {
 }
 .card,
 .card-note {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
+
+  box-shadow: 0 0 0 1px rgb(0, 0, 0, 0.05);
 }
 .card:hover,
 .card-note:hover {
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 4px 0.17px rgb(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
