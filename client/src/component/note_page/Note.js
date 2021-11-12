@@ -1,9 +1,11 @@
-const Note = ({ note, del, edit, pinHandler, detail, displayTime}) => {
+const Note = ({ note, del, edit, pinHandler, detail, displayTime }) => {
   const { id, title, text, date, pinned, color, time, tag } = note;
   const styleCard = {
     position: "relative",
     "border-color": color,
     color: color,
+    minHeight: "160px",
+    borderRadius: "8px",
   };
   const styleEditIcon = {
     position: "absolute",
@@ -21,8 +23,8 @@ const Note = ({ note, del, edit, pinHandler, detail, displayTime}) => {
     left: "2px",
   };
   return (
-    <div className="card card-note" style={styleCard}>
-      {(pinned === "n") ? (
+    <div className="card card-note bg-light border-light" style={styleCard}>
+      {pinned === "n" ? (
         <i
           role="button"
           className="bi bi-pin"
@@ -54,14 +56,14 @@ const Note = ({ note, del, edit, pinHandler, detail, displayTime}) => {
         data-bs-target="#see-detail"
       >
         <h5 className="card-title">{title}</h5>
-        <p className="card-text">{text}</p>
-        <p className="card-text">{date}</p>
+        <p className="card-text mb-1">{text}</p>
+        <p className="card-text mb-2">{date}</p>
         {displayTime && (
-        <p className="badge btn-secondary btn-sm rounded-pill">
-          <i className="bi bi-alarm"></i> {time}
-        </p>
+          <p className="badge btn-secondary btn-sm rounded-pill">
+            <i className="bi bi-alarm"></i> {time}
+          </p>
         )}
-        <p className="badge btn-secondary btn-sm rounded-pill">
+        <p className="badge btn-secondary btn-sm rounded-pill mb-0">
           <i className="bi bi-tags"></i> {tag}
         </p>
       </div>

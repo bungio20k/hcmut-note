@@ -105,7 +105,10 @@ export default function NotePage(props) {
           </Link>
 
           <div className="btn-group col-6 offset-md-1">
-            <Search searchText={props.searchText} changeText={props.changeText} />
+            <Search
+              searchText={props.searchText}
+              changeText={props.changeText}
+            />
           </div>
 
           <button className="btn btn-outline-light col-1 offset-md-2">
@@ -135,6 +138,7 @@ export default function NotePage(props) {
                 >
                   Add note <i className="bi bi-plus-circle-fill"></i>
                 </button>
+                <hr />
                 <NoteCore
                   note={note}
                   setNote={setNote}
@@ -145,7 +149,7 @@ export default function NotePage(props) {
               </div>
 
               <span className="badge bg-info my-2">Pinned</span>
-              <div className="row g-2">
+              <div className="row g-3 justify-content-center">
                 {props.notes
                   .filter(
                     (note) =>
@@ -167,9 +171,10 @@ export default function NotePage(props) {
                   ))}
               </div>
 
+              <hr />
               <span className="badge bg-info my-2">Other</span>
 
-              <div className="row g-2">
+              <div className="row g-3 justify-content-center">
                 {props.notes
                   .filter(
                     (note) =>
