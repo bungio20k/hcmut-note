@@ -1,56 +1,118 @@
 const path = require('path');
 const express = require("express");
 const mongoose = require("mongoose");
-const {Schema} = mongoose;
+const { Schema } = mongoose;
+const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-mongoose.connect("mongodb+srv://toanday:toan1402@cluster0.ssxqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://toanday:toan1402@cluster0.ssxqv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true }).catch(err => console.error(err));
 
-app.use(express.urlencoded({ extended: true}));
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 
 const userSchema = new Schema({
-  username: {type: String, required: true},
-  password: {type: String, required: true}
+  username: { type: String, required: true },
+  password: { type: String, required: true }
 })
+const noteSchema = new Schema({
+  id: String,
+  title: String,
+  text: String,
+  date: Date,
+  time: String,
+  tag: String,
+  pinned: String,
+  content: String,
+  color: String,
+  databaseid: String,
+})
+const notesListSchema = new Schema({
+  user: String,
+  notes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'note'
+  }]
+})
+const userModel = mongoose.model('user', userSchema, 'user');
+const noteModel = mongoose.model('note', noteSchema, 'note');
+const notesListModel = mongoose.model('noteslist', notesListSchema, 'noteslist');
 
-const userModel = mongoose.model('User', userSchema);
-
-app.post('/vertify-login', (req, res) => {
-  userModel.find({
-    username: req.body.user, 
+app.post('/login', async (req, res) => {
+  const check = await userModel.findOne({
+    username: req.body.user,
     password: req.body.password
-  }).exec((data, err) => {
-    if (err) console.error(err);
-    // if (!data) res.json("User not found");
-    // else res.json("Success");
-    res.json(req.body);
-  })
+  });
+  if (check) res.send({ token: check._id.toString() });
+  else res.send({ token: 'not found' })
 })
 
 app.post('/register', (req, res) => {
-  userModel.find({username: req.body.user}).exec((data, err) => {
-    if (err) 
-      console.error(err);
-    res.json(data);
-    // if (data) 
-    //   res.json("Username already exists");
-    // else {
-    //   const newUser = new userModel({username: req.body.user, password: req.body.password});
-    //   newUser.save((data, err) => {
-    //     if (err) console.log(err);
-    //     res.redirect('/login');
-    //   })
-    // }
+  userModel.findOne({ username: req.body.user }).exec((err, data) => {
+    if (data)
+      res.json("Username already exists");
+    else {
+      const newUser = new userModel({ username: req.body.user, password: req.body.password });
+      const data = newUser.save((err, data) => {
+        const newList = new notesListModel({
+          user: data._id.toString(),
+          notes: []
+        });
+        newList.save();
+      });
+      res.redirect('/login');
+    }
   })
 })
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
+app.post('/allnotes', async (req, res) => {
+  const data = await notesListModel.findOne({ user: req.body.userId }).populate('notes');
+  if (data) res.send(data.notes);
+})
+
+app.post('/notechange', async (req, res) => {
+  const note = req.body.note;
+  console.log('add/modify:', note);
+  // add new empty note and retrieve _id
+  if (!note.hasOwnProperty('databaseid')) {
+    const newNote = new noteModel();
+    const data = await newNote.save();
+    note['databaseid'] = data._id.toString();
+
+    // add to noteList
+    const list = await notesListModel.findOne({
+      user: req.body.userId,
+    });
+    list.notes.push(data._id);
+    list.save();
+  }
+  // modify note
+  const currentNote = await noteModel.findById(note.databaseid);
+  currentNote.id = note.databaseid;
+  currentNote.title = note.title,
+  currentNote.text = note.text,
+  currentNote.date = note.date,
+  currentNote.time = note.time,
+  currentNote.tag = note.tag,
+  currentNote.pinned = note.pinned,
+  currentNote.content = note.content,
+  currentNote.color = note.color
+  currentNote.databaseid = note.databaseid;
+  currentNote.save();
+
+  res.send(currentNote._id.toString());
+})
+
+app.post('/deletenote', async (req, res) => {
+  const check = await noteModel.findByIdAndDelete(req.body.noteId);
+  console.log('deleted: ', check);
+  const list = await notesListModel.findOne({ user: req.body.userId });
+  list.notes = list.notes.filter((noteid) => (noteid.toString() != req.body.noteId));
+  list.save();
+})
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));

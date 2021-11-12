@@ -1,12 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import axios from 'axios'
+import { Link, Redirect } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import "./css/login-signup.css";
 import illus from "./imgs/illustrate.jpg";
 import Footer from "../footer/Footer";
 
-export default function Login() {
+export default function Login(props) {
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    const response = await axios.post('/login', {
+      user: user,
+      password: password,
+    });
+
+    if (response.data.token != 'not found') {
+      localStorage.setItem('token', response.data.token);
+      props.setToken(response.data.token);
+    }
+    else {
+      alert('User not found or wrong password!');
+    }
+  }
+  if (!props.token)
   return (
     <div className="all">
       <div className="header-body">
@@ -21,33 +40,25 @@ export default function Login() {
             <div className="col-md-4" id="left">
               <h2>Welcome back</h2>
               <h5 id="logintext"> Login to access HCMUT-NOTE </h5>
-              <div>
-                <input
-                  type="text"
-                  id="a"
-                  placeholder="Username"
-                  name="user"
-                  required=""
-                />
-              </div>
+                  <input
+                    type="text"
+                    id="a"
+                    placeholder="Username"
+                    value={user}
+                    onChange={e => setUser(e.target.value)}
+                  />
 
-              <div>
-                <input
-                  type="password"
-                  id="b"
-                  placeholder="Password"
-                  name="password"
-                  required=""
-                />
-              </div>
+                  <input
+                    type="password"
+                    id="b"
+                    placeholder="Password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                  />
 
-              <div>
-                <input type="checkbox" id="checkbox" />
-                Remember me
-              </div>
-              <Link to="/notepage">
-                <input type="submit" id="subbutton" value="Login now" />
-              </Link>
+                  <input type="checkbox" id="checkbox" checked />
+                  Remember me
+                <button id="subbutton" onClick={handleLogin}>Login now</button>
               <hr />
               <div>
                 Don't have account?
@@ -64,5 +75,8 @@ export default function Login() {
       </div>
       <Footer />
     </div>
-  );
+  )
+  else return (
+    <Redirect to="/notepage" />
+  )
 }

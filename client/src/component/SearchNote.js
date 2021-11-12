@@ -15,6 +15,10 @@ import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
 
 export default function SearchNote(props) {
+  const logOut = () => {
+    localStorage.removeItem('token');
+    props.setToken(null);
+  }
   //
   const [note, setNote] = useState({
     id: nanoid(),
@@ -80,7 +84,7 @@ export default function SearchNote(props) {
           </button>
 
           <Link to="/">
-            <button className="btn btn-outline-light col-1">
+            <button className="btn btn-outline-light col-1" onClick={logOut}>
               <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>
@@ -110,8 +114,8 @@ export default function SearchNote(props) {
                     (note) =>
                       (note.title.toLowerCase().includes(props.searchText) ||
                         note.text.toLowerCase().includes(props.searchText) ||
-                        note.tag.toLowerCase().includes(props.searchText)) 
-                        &&
+                        note.tag.toLowerCase().includes(props.searchText))
+                      &&
                       note.pinned.includes("y")
                   )
                   .map((note) => (
@@ -136,7 +140,7 @@ export default function SearchNote(props) {
                     (note) =>
                       (note.title.toLowerCase().includes(props.searchText) ||
                         note.text.toLowerCase().includes(props.searchText) ||
-                        note.tag.toLowerCase().includes(props.searchText)) 
+                        note.tag.toLowerCase().includes(props.searchText))
                       &&
                       note.pinned.includes("n")
                   )

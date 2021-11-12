@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //
-import { useState } from "react";
+import { useState, useEffect } from "react";
+//
+import axios from 'axios';
 
 import Search from "../navigation_sidebar/Search";
 //
@@ -14,23 +16,26 @@ import NoteCore from "./NoteCore";
 import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
 
+const defaultNote = {
+  id: nanoid(),
+  title: "",
+  text: "",
+  date: "",
+  time: "",
+  tag: "",
+  content: "",
+  pinned: "n",
+  color: "#000000",
+}
+
 export default function NotePage(props) {
-  //
-  const [note, setNote] = useState({
-    id: nanoid(),
-    title: "",
-    text: "",
-    date: "",
-    tag: "",
-    content: "",
-    pinned: "n",
-    color: "#000000",
-  });
+  const [note, setNote] = useState(defaultNote);
 
   const [editStatus, setEditStatus] = useState({
     status: false,
     id: "",
   });
+
 
   const editNote = (id) => {
     console.log(id);
@@ -43,20 +48,46 @@ export default function NotePage(props) {
   };
 
   const deleteNote = (id) => {
-    props.setNotes((prev) => prev.filter((note) => id !== note.id));
+    ///////////////// code for api /////////////////////////////
+    const noteToDelete = props.notes[props.notes.findIndex((item) => item.id == id)];
+    axios.post('/deletenote', {
+      userId: localStorage.getItem('token'),
+      noteId: noteToDelete.databaseid,
+    });
+    ////////////////////////////////////////////////////////////
+    props.setNotes((prev) => {
+      return prev.filter((note) => id !== note.id)
+    });
   };
 
   const seeDetailNote = (id) => {
     setNote(props.notes.find((note) => note.id === id));
   };
 
+  //////////////// code for api //////////////////////////
+  const handleNoteUpdate = async (note) => {
+    const res = await axios.post('/notechange', {
+      userId: localStorage.getItem('token'),
+      note: note
+    }).then((response) => { return response })
+
+    return res;
+  }
+  ////////////////////////////////////////////////////////
   const pinHandler = (id, status) => {
     props.setNotes((prev) => {
-      prev[prev.findIndex((note) => note.id === id)].pinned =
+      const noteToUpdate = prev.findIndex((note) => note.id === id);
+      prev[noteToUpdate].pinned =
         status === "n" ? "y" : "n";
+      handleNoteUpdate(prev[noteToUpdate]);
       return [...prev];
     });
   };
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    props.setToken(null);
+  }
 
   const [searchText, setSearchText] = useState("");
   //
@@ -82,7 +113,7 @@ export default function NotePage(props) {
           </button>
 
           <Link to="/">
-            <button className="btn btn-outline-light col-1">
+            <button className="btn btn-outline-light col-1" onClick={logOut} >
               <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>

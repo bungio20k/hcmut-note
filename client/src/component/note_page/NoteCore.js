@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SunEditor from "suneditor-react";
 
 import "suneditor/dist/css/suneditor.min.css";
 import { nanoid } from "nanoid";
+import axios from 'axios';
+
+//////////////// code for api //////////////////////////
+const handleNoteUpdate = async (note) => {
+  const res = await axios.post('/notechange', {
+    userId: localStorage.getItem('token'),
+    note: note
+  }).then((response) => {
+    if (!note.hasOwnProperty('databaseid')) {
+      note['databaseid'] = response.data;
+    };
+    return note;
+  })
+
+  return res;
+}
+////////////////////////////////////////////////////////
 
 export default function NoteCore(props) {
   const changeHandler = (e) => {
@@ -19,17 +36,26 @@ export default function NoteCore(props) {
   };
 
   //when submit when edit or add
-  const submitHandler = () => {
+  const submitHandler = async () => {
     if (!props.editStatus.status) {
       props.setNotes((prev) => [...prev, props.note]);
     } else {
       props.setNotes((prev) => {
-        prev[prev.findIndex((item) => item.id === props.editStatus.id)] =
-          props.note;
+        prev[prev.findIndex((item) => item.id === props.editStatus.id)] = props.note;
         return [...prev];
       });
       props.setEditStatus({ status: false, id: "" });
     }
+    ////////////////////// code for api ////////////////
+    const savedNote = await handleNoteUpdate(props.note);
+    props.setNotes((prev) => {
+      const index = prev.findIndex((item) => item.id === savedNote.id)
+      savedNote.id = savedNote.databaseid;
+      prev[index] = savedNote;
+      console.log([...prev])
+      return [...prev];
+    });
+    ////////////////////////////////////////////////////
     props.setNote({
       id: nanoid(),
       title: "",

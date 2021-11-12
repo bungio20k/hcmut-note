@@ -56,6 +56,10 @@ const WorkSpace = (props) => {
       return [...prev];
     });
   };
+  const logOut = () => {
+    localStorage.removeItem('token');
+    props.setToken(null);
+  }
   return (
     <>
       <button
@@ -86,7 +90,7 @@ const WorkSpace = (props) => {
           </Link>
 
           <div className="btn-group col-6 offset-md-1">
-            <Search searchText={props.searchText} changeText={props.changeText}/>
+            <Search searchText={props.searchText} changeText={props.changeText} />
           </div>
 
           <button className="btn btn-outline-light col-1 offset-md-2">
@@ -94,7 +98,7 @@ const WorkSpace = (props) => {
           </button>
 
           <Link to="/">
-            <button className="btn btn-outline-light col-1">
+            <button className="btn btn-outline-light col-1" onClick={logOut}>
               <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>

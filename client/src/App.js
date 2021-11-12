@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useState } from 'react'
-
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import axios from "axios"
 import {
   About,
   Contact,
@@ -15,237 +15,37 @@ import {
 
 import WorkSpace from "./component/WorkSpace";
 import SearchNote from "./component/SearchNote";
-
 import { nanoid } from "nanoid";
 
-const NOTES_DATA = [
-  {
-    id: nanoid(),
-    title: "software",
-    text: "task3",
-    date: "October 26th 2021",
-    time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#2980b9",
-  },
-
-  {
-    id: nanoid(),
-    title: "chemistry",
-    text: "midterm",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "network",
-    text: "homework",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "dbs",
-    text: "quiz",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
+const SAMPLE_NOTE =
+{
+  id: nanoid(),
+  title: "This is a sample note",
+  text: "short description",
+  date: "October 26th 2021",
+  time: "02:00 AM",
+  tag: "ex",
+  pinned: "y",
+  content: "long long description",
+  color: "#2980b9",
+};
 
 
-
-  {
-    id: nanoid(),
-    title: "software",
-    text: "task3",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "chemistry",
-    text: "midterm",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "software",
-    text: "task3",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "chemistry",
-    text: "midterm",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "software",
-    text: "task3",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "y",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-
-  {
-    id: nanoid(),
-    title: "chemistry",
-    text: "midterm",
-    date: "October 26th 2021", time: "02:00",
-    tag: "tag1",
-    pinned: "n",
-    content: "lorem ipsum dolor sit amet, consectetur",
-    color: "#000000",
-  },
-]
+//////////////////////// code for api ///////////////////////////
+const fetchNote = async (setNotes) => {
+  const data = await axios.post('/allnotes', {
+    userId: localStorage.getItem('token')
+  }).then((response) => response.data);
+  console.log([...data]);
+  if (data) setNotes([...data]);
+}
 
 export default function App() {
-  const [notes, setNotes] = useState(NOTES_DATA);
+  const [notes, setNotes] = useState([]);
   const [searchText, changeText] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
+  useEffect(() => fetchNote(setNotes), [token]);
 
   return (
     <Router>
@@ -264,7 +64,7 @@ export default function App() {
           </Route>
 
           <Route path="/login">
-            <Login />
+            <Login token={token} setToken={setToken} />
           </Route>
 
           <Route path="/register">
@@ -272,19 +72,31 @@ export default function App() {
           </Route>
 
           <Route path="/notepage">
-            <NotePage notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText}/>
+            {token ?
+              <NotePage notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText} setToken={setToken} />
+              :
+              <Redirect to='/login' />}
           </Route>
 
           <Route path="/notification">
-            <Notification searchText={searchText} changeText={changeText}/>
+            {token ?
+              <Notification searchText={searchText} changeText={changeText} setToken={setToken} />
+              :
+              <Redirect to='/login' />}
           </Route>
 
           <Route path="/workspace">
-            <WorkSpace searchText={searchText} changeText={changeText}/>
+            {token ?
+              <WorkSpace searchText={searchText} changeText={changeText} setToken={setToken} />
+              :
+              <Redirect to='/login' />}
           </Route>
 
           <Route path='/search'>
-            <SearchNote notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText}/>
+            {token ?
+              <SearchNote notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText} setToken={setToken} />
+              :
+              <Redirect to='/login' />}
           </Route>
 
           <Route path="/">
@@ -293,5 +105,5 @@ export default function App() {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
