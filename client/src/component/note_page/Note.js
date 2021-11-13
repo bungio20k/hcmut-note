@@ -57,7 +57,7 @@ const Note = ({ note, del, edit, pinHandler, detail, displayTime }) => {
       >
         <h5 className="card-title">{title}</h5>
         <p className="card-text mb-1">{text}</p>
-        <p className="card-text mb-2">{date}</p>
+        <p className="card-text mb-2">{(date != 'Invalid Date') && (new Date(date)).toDateString()}</p>
         {displayTime && (
           <p className="badge btn-secondary btn-sm rounded-pill">
             <i className="bi bi-alarm"></i> {time}

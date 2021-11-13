@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 
@@ -16,175 +18,15 @@ import Logo from "../login_signup_home/imgs/logo.jpg";
 
 import { nanoid } from "nanoid";
 
-const todayNoteData = [
-  {
-    id: nanoid(),
-    title: "Do homework",
-    text: "short description",
-    content: "Complete homeworks for sofware engineering",
-    date: "October 26th 2021",
-    time: "08:00",
-    tag: "Study",
-    color: "#16a085",
-  },
-  {
-    id: nanoid(),
-    title: "Battlepass",
-    text: "short description",
-    content: "Complete battlepass daily mission",
-    date: "October 26th 2021",
-    time: "10:00",
-    tag: "Gaming",
-    color: "#000000",
-  },
-  {
-    id: nanoid(),
-    title: "Prepare for lunch",
-    text: "short description",
-    content: "Buy some pork and rosemary for luch",
-    date: "October 26th 2021",
-    time: "10:30",
-    tag: "Grocery",
-    color: "#000000",
-  },
-  {
-    id: nanoid(),
-    title: "Workout",
-    text: "short description",
-    content: "100 push up go brrr",
-    date: "October 26th 2021",
-    time: "04:30",
-    tag: "Workout",
-    color: "#000000",
-  },
-];
-
-const weeklyNoteData = {
-  Sunday: [
-    {
-      id: nanoid(),
-      title: "Note1",
-      text: "short description",
-      content: "This is note 1",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag1",
-      color: "#000000",
-    },
-  ],
-  Monday: [
-    {
-      id: nanoid(),
-      title: "Note2",
-      text: "short description",
-      content: "This is note 2",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag2",
-      color: "#000000",
-    },
-  ],
-  Tuesday: [
-    {
-      id: nanoid(),
-      title: "Note3",
-      text: "short description",
-      content: "This is note 3",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag3",
-      color: "#000000",
-    },
-    {
-      id: nanoid(),
-      title: "Note3.1",
-      text: "short description",
-      content: "This is note 3.1",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag3",
-      color: "#000000",
-    },
-  ],
-  Wednesday: [
-    {
-      id: nanoid(),
-      title: "Note 4",
-      text: "short description",
-      content: "This is note 4",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag4",
-      color: "#000000",
-    },
-  ],
-  Thursday: [
-    {
-      id: nanoid(),
-      title: "Note 5",
-      text: "short description",
-      content: "This is note 5",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag3",
-      color: "#000000",
-    },
-  ],
-  Friday: [
-    {
-      id: nanoid(),
-      title: "Note 6",
-      text: "short description",
-      content: "This is note 6",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag2",
-      color: "#000000",
-    },
-    {
-      id: nanoid(),
-      title: "Note 6",
-      text: "short description",
-      content: "This is note 6",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag2",
-      color: "#000000",
-    },
-    {
-      id: nanoid(),
-      title: "Note 6",
-      text: "short description",
-      content: "This is note 6",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag2",
-      color: "#000000",
-    },
-    {
-      id: nanoid(),
-      title: "Note 6",
-      text: "short description",
-      content: "This is note 6",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag2",
-      color: "#000000",
-    },
-  ],
-  Saturday: [
-    {
-      id: nanoid(),
-      title: "Note 7",
-      text: "short description",
-      content: "This is note 7",
-      date: "October 26th 2021",
-      time: "10:00 AM",
-      tag: "Tag1",
-      color: "#000000",
-    },
-  ],
-};
+const rat = {
+  "Sunday": [],
+  "Monday": [],
+  "Tuesday": [],
+  "Wednesday": [],
+  "Thursday": [],
+  "Friday": [],
+  "Saturday": [],
+}
 
 const week = [
   "Sunday",
@@ -196,21 +38,53 @@ const week = [
   "Saturday",
 ];
 
+const weekNote = (data, setNotes) => {
+  const notedata = {};
+  for (let i = 0; i < 7; i++) {
+    const currentDay = new Date();
+    currentDay.setDate(currentDay.getDate() + (i - currentDay.getDay()))
+    notedata[week[i]] = data.filter((note) => (
+      (new Date(note.date).toDateString() == currentDay.toDateString())
+    ))
+  }
+  console.log(notedata);
+  setNotes({...notedata});
+}
+
+// const fetchWeek = async (setNotes) => {
+//   const data = await axios.post('/weeknote', {
+//     userId: localStorage.getItem('token')
+//   }).then(res => res.data);
+//   console.log({ ...data });
+//   if (data) setNotes({ ...data });
+// }
+
 export default function Notification(props) {
+  const [weeklyNoteData, setWeek] = useState(rat);
+  const [notes, setNotes] = useState([]);
   const [currentDay, changeDay] = useState(new Date());
 
-  const [notes, setNotes] = useState(todayNoteData);
+  useEffect(() => {
+    const todayNote = props.notes.filter(note => (new Date(note.date)).toDateString() == currentDay.toDateString());
+    console.log(todayNote);
+    setNotes([...todayNote]);
+  }, [currentDay]);
+
+  useEffect(() => weekNote(props.notes, setWeek), [props.notes]);
 
   const [note, setNote] = useState({
     id: nanoid(),
     title: "",
     text: "",
     date: "",
+    time: "",
     tag: "",
     content: "",
     pinned: "n",
     color: "#000000",
   });
+
+  // useEffect(() => fetchWeek(setWeek), [note]);
 
   const [editStatus, setEditStatus] = useState({
     status: false,
@@ -218,7 +92,6 @@ export default function Notification(props) {
   });
 
   const editNote = (id) => {
-    console.log(id);
     setEditStatus({
       status: true,
       id: id,
@@ -228,17 +101,38 @@ export default function Notification(props) {
   };
 
   const deleteNote = (id) => {
+    ///////////////// code for api /////////////////////////////
+    const noteToDelete = notes[notes.findIndex((item) => item.id == id)];
+    axios.post('/deletenote', {
+      userId: localStorage.getItem('token'),
+      noteId: noteToDelete.databaseid,
+    });
+    ////////////////////////////////////////////////////////////
     setNotes((prev) => prev.filter((note) => id !== note.id));
+    props.setNotes((prev) => prev.filter((note) => id !== note.id));
   };
 
   const seeDetailNote = (id) => {
     setNote(notes.find((note) => note.id === id));
   };
 
+  //////////////// code for api //////////////////////////
+  const handleNoteUpdate = async (note) => {
+    const res = await axios.post('/notechange', {
+      userId: localStorage.getItem('token'),
+      note: note
+    }).then((response) => { return response })
+
+    return res;
+  }
+  ////////////////////////////////////////////////////////
+
   const pinHandler = (id, status) => {
-    setNotes((prev) => {
-      prev[prev.findIndex((note) => note.id === id)].pinned =
+    props.setNotes((prev) => {
+      const noteToUpdate = prev.findIndex((note) => note.id === id);
+      prev[noteToUpdate].pinned =
         status === "n" ? "y" : "n";
+      handleNoteUpdate(prev[noteToUpdate]);
       return [...prev];
     });
   };
@@ -255,7 +149,7 @@ export default function Notification(props) {
         setNote={setNote}
         editStatus={editStatus}
         setEditStatus={setEditStatus}
-        setNotes={setNotes}
+        setNotes={props.setNotes}
       />
 
       <div className="container-fluid bg-info" id="navbar">
@@ -299,7 +193,7 @@ export default function Notification(props) {
               </button>
             )}
             <div className="col d-grid gap-2 offset-md-2" id="note-list">
-              {notes.map((note) => (
+              {props.notes.filter(note => (new Date(note.date)).toDateString() == (currentDay.toDateString())).map((note) => (
                 <div key={note.id}>
                   <Note
                     note={note}
@@ -314,7 +208,7 @@ export default function Notification(props) {
             </div>
           </div>
           <div className="col justify-self-center text-info" id="calendar">
-            <Calendar value={currentDay} onChange={changeDay} />
+            <Calendar value={currentDay} onChange={changeDay} calendarType="US"/>
             <button
               type="button"
               className="btn btn-info mb-2 text-secondary rounded-pill invisible"

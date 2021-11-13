@@ -44,9 +44,9 @@ export default function App() {
   const [notes, setNotes] = useState([]);
   const [searchText, changeText] = useState('');
   const [token, setToken] = useState(localStorage.getItem('token'));
-
   useEffect(() => fetchNote(setNotes), [token]);
 
+  console.log(notes);
   return (
     <Router>
       <div>
@@ -80,7 +80,7 @@ export default function App() {
 
           <Route path="/notification">
             {token ?
-              <Notification searchText={searchText} changeText={changeText} setToken={setToken} />
+              <Notification notes={notes} setNotes={setNotes} searchText={searchText} changeText={changeText} setToken={setToken} />
               :
               <Redirect to='/login' />}
           </Route>

@@ -38,7 +38,7 @@ export default function NoteCore(props) {
   //when submit when edit or add
   const submitHandler = async () => {
     if (!props.editStatus.status) {
-      props.setNotes((prev) => [...prev, props.note]);
+      props.setNotes((prev) => [props.note ,...prev]);
     } else {
       props.setNotes((prev) => {
         prev[prev.findIndex((item) => item.id === props.editStatus.id)] = props.note;
@@ -51,6 +51,7 @@ export default function NoteCore(props) {
     props.setNotes((prev) => {
       const index = prev.findIndex((item) => item.id === savedNote.id)
       savedNote.id = savedNote.databaseid;
+      savedNote.date = (new Date(savedNote.date)).toString();
       prev[index] = savedNote;
       console.log([...prev])
       return [...prev];
@@ -266,7 +267,7 @@ export default function NoteCore(props) {
                 <div>
                   <span className="badge bg-primary">{props.note.tag}</span>
                 </div>
-                <p className="ms-3 mb-0">{props.note.date}</p>
+                {(props.note.date != 'Invalid Date') && <p className="ms-3 mb-0">{(new Date(props.note.date)).toDateString()}</p>}
                 <p className="ms-3 mb-0">{props.note.time}</p>
               </div>
               <button

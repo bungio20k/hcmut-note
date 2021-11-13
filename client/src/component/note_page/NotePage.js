@@ -34,8 +34,7 @@ export default function NotePage(props) {
   const [editStatus, setEditStatus] = useState({
     status: false,
     id: "",
-  });
-
+  })
 
   const editNote = (id) => {
     console.log(id);

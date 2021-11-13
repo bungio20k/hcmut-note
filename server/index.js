@@ -22,7 +22,7 @@ const noteSchema = new Schema({
   id: String,
   title: String,
   text: String,
-  date: Date,
+  date: String,
   time: String,
   tag: String,
   pinned: String,
@@ -93,13 +93,13 @@ app.post('/notechange', async (req, res) => {
   const currentNote = await noteModel.findById(note.databaseid);
   currentNote.id = note.databaseid;
   currentNote.title = note.title,
-  currentNote.text = note.text,
-  currentNote.date = note.date,
-  currentNote.time = note.time,
-  currentNote.tag = note.tag,
-  currentNote.pinned = note.pinned,
-  currentNote.content = note.content,
-  currentNote.color = note.color
+    currentNote.text = note.text,
+    currentNote.date = ((note.date == 'Invalid Date') ? '' : (new Date(note.date)).toString()),
+    currentNote.time = note.time,
+    currentNote.tag = note.tag,
+    currentNote.pinned = note.pinned,
+    currentNote.content = note.content,
+    currentNote.color = note.color
   currentNote.databaseid = note.databaseid;
   currentNote.save();
 
@@ -113,6 +113,38 @@ app.post('/deletenote', async (req, res) => {
   list.notes = list.notes.filter((noteid) => (noteid.toString() != req.body.noteId));
   list.save();
 })
+
+// app.post('/todaynote', async (req, res) => {
+//   const data = await notesListModel.findOne({ user: req.body.userId }).populate('notes');
+//   if (data) res.send(data.notes.filter(
+//     (note) => note.date == req.body.date
+//   ));
+// })
+
+// app.post('/weeknote', async (req, res) => {
+//   console.log(req.body);
+//   const data = await notesListModel.findOne({ user: req.body.userId }).populate('notes');
+//   const week = [
+//     "Sunday",
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+//   ];
+//   notedata = {
+//   };
+//   for (let i = 0; i < 7; i++) {
+//     const currentDay = new Date();
+//     currentDay.setDate(currentDay.getDate() + (i - currentDay.getDay()))
+//     notedata[week[i]] = data.notes.filter((note) => (
+//       (new Date(note.date).toDateString() == currentDay.toDateString())
+//     ))
+//   }
+//   console.log(notedata);
+//   res.send(notedata);
+// })
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
