@@ -18,6 +18,9 @@
     "@popperjs/core": "^2.10.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "mongoose": "^6.0.12",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-gesture-responder": "^2.1.0",
+    "react-grid-dnd": "^2.1.2"
   }
 }

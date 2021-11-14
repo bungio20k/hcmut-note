@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 //
 import { useState, useEffect } from "react";
 //
-import axios from 'axios';
+import axios from "axios";
 
 import Search from "../navigation_sidebar/Search";
 //
@@ -15,6 +15,14 @@ import NoteCore from "./NoteCore";
 
 import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
+//dnd
+import {
+  GridContextProvider,
+  GridDropZone,
+  GridItem,
+  swap,
+  move
+} from "react-grid-dnd";
 
 const defaultNote = {
   id: nanoid(),
@@ -26,15 +34,23 @@ const defaultNote = {
   content: "",
   pinned: "n",
   color: "#000000",
-}
+};
 
 export default function NotePage(props) {
-  const [note, setNote] = useState(defaultNote);
+  const [note, setNote] = React.useState(defaultNote);
+   //grid drag and drop
+
+   function onChange( sourceIndex, targetIndex) {
+    const nextState = swap(props.notes, sourceIndex, targetIndex);
+    setNote(nextState);
+  }
+ 
+    
 
   const [editStatus, setEditStatus] = useState({
     status: false,
     id: "",
-  })
+  });
 
   const editNote = (id) => {
     console.log(id);
@@ -45,17 +61,18 @@ export default function NotePage(props) {
     setNote(props.notes.find((note) => note.id === id));
     document.getElementById("addnote").click();
   };
-
+ 
   const deleteNote = (id) => {
     ///////////////// code for api /////////////////////////////
-    const noteToDelete = props.notes[props.notes.findIndex((item) => item.id == id)];
-    axios.post('/deletenote', {
-      userId: localStorage.getItem('token'),
+    const noteToDelete =
+      props.notes[props.notes.findIndex((item) => item.id == id)];
+    axios.post("/deletenote", {
+      userId: localStorage.getItem("token"),
       noteId: noteToDelete.databaseid,
     });
     ////////////////////////////////////////////////////////////
     props.setNotes((prev) => {
-      return prev.filter((note) => id !== note.id)
+      return prev.filter((note) => id !== note.id);
     });
   };
 
@@ -65,31 +82,35 @@ export default function NotePage(props) {
 
   //////////////// code for api //////////////////////////
   const handleNoteUpdate = async (note) => {
-    const res = await axios.post('/notechange', {
-      userId: localStorage.getItem('token'),
-      note: note
-    }).then((response) => { return response })
+    const res = await axios
+      .post("/notechange", {
+        userId: localStorage.getItem("token"),
+        note: note,
+      })
+      .then((response) => {
+        return response;
+      });
 
     return res;
-  }
+  };
   ////////////////////////////////////////////////////////
   const pinHandler = (id, status) => {
     props.setNotes((prev) => {
       const noteToUpdate = prev.findIndex((note) => note.id === id);
-      prev[noteToUpdate].pinned =
-        status === "n" ? "y" : "n";
+      prev[noteToUpdate].pinned = status === "n" ? "y" : "n";
       handleNoteUpdate(prev[noteToUpdate]);
       return [...prev];
     });
   };
 
   const logOut = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     props.setToken(null);
-  }
+  };
 
   const [searchText, setSearchText] = useState("");
   //
+ 
   return (
     <>
       <div className="header">
@@ -115,7 +136,7 @@ export default function NotePage(props) {
           </button>
 
           <Link to="/">
-            <button className="btn btn-outline-light col-1" onClick={logOut} >
+            <button className="btn btn-outline-light col-1" onClick={logOut}>
               <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>
@@ -148,52 +169,79 @@ export default function NotePage(props) {
               </div>
 
               <span className="badge bg-info my-2">Pinned</span>
-              <div className="row g-3 justify-content-center">
-                {props.notes
+            
+              <GridContextProvider onChange={onChange}>
+                <GridDropZone
+                  id="note.id"
+                  boxesPerRow={3}
+                  rowHeight={200}
+                  style={{ height: "800px" }}
+                >
+                  {props.notes
                   .filter(
                     (note) =>
-                      (note.title.toLowerCase().includes(searchText) ||
-                        note.text.toLowerCase().includes(searchText)) &&
+                    (note.title.toLowerCase().includes(searchText) ||
+                    note.text.toLowerCase().includes(searchText)) &&
                       note.pinned.includes("y")
-                  )
-                  .map((note) => (
-                    <div className="col-lg-3" key={note.id}>
-                      <Note
+                      ).map((note) => (
+                    <GridItem key={note}>
+                      <div
+                        style={{
+                          width: "80%",
+                          height: "100%",
+                        }}
+                        >
+                        {<Note
                         note={note}
                         del={deleteNote}
                         edit={editNote}
                         pinHandler={pinHandler}
                         detail={seeDetailNote}
                         displayTime={false}
-                      />
-                    </div>
+                        />}
+                      </div>
+                    </GridItem>
                   ))}
-              </div>
-
+                </GridDropZone>
+              </GridContextProvider>
+             
               <hr />
               <span className="badge bg-info my-2">Other</span>
 
-              <div className="row g-3 justify-content-center">
-                {props.notes
+              <GridContextProvider onChange={onChange}>
+                <GridDropZone
+                  id="note.id"
+                  boxesPerRow={3}
+                  rowHeight={200}
+                  style={{ height: "800px" }}
+                >
+                  {props.notes
                   .filter(
                     (note) =>
-                      (note.title.toLowerCase().includes(searchText) ||
-                        note.text.toLowerCase().includes(searchText)) &&
+                    (note.title.toLowerCase().includes(searchText) ||
+                    note.text.toLowerCase().includes(searchText)) &&
                       note.pinned.includes("n")
-                  )
-                  .map((note) => (
-                    <div className="col-lg-3" key={note.id}>
-                      <Note
+                      ).map((note) => (
+                    <GridItem key={note}>
+                      <div
+                        style={{
+                          width: "80%",
+                          height: "100%",
+                        }}
+                        >
+                        <Note
                         note={note}
                         del={deleteNote}
                         edit={editNote}
                         pinHandler={pinHandler}
                         detail={seeDetailNote}
                         displayTime={false}
-                      />
-                    </div>
+                        />
+                      </div>
+                    </GridItem>
                   ))}
-              </div>
+                </GridDropZone>
+              </GridContextProvider>
             </div>
           </div>
         </div>
