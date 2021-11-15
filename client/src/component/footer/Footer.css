@@ -16,3 +16,41 @@
   .content-wrap {
     flex: 1;
   }
+
+ .footer-links{
+    color:  white;
+    margin: 20px 0 12px;
+    padding: 0;
+  }
+  .footer-links a{
+    display:inline-block;
+    line-height: 1.8;
+    font-weight:400;
+    text-decoration: none;
+    color:  white;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+
+
+.contact-icons i{
+  margin-right: 20px;
+}
+
+  .footer-icons a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color:  #33383b;
+    border-radius: 2px;
+  
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+  
+    margin-right: 3px;
+    margin-bottom: 5px;
+    margin-right: 8px;
+  }
