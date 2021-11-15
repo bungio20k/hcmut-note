@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar(props) {
 
-  const tagData = [...new Set(props.notes.filter((note) => (note.tag != '')).map((note) => note.tag))];
+  const tagData = [...new Set(props.notes.filter((note) => (note.tag != '#')).map((note) => note.tag))];
   let searchButton;
   useEffect(() => { searchButton = document.getElementById("search-button") }, []);
 

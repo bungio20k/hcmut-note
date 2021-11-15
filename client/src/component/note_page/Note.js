@@ -64,7 +64,7 @@ const Note = ({ note, del, edit, pinHandler, detail, displayTime }) => {
           </p>
         )}
         <p className="badge btn-secondary btn-sm rounded-pill mb-0">
-          <i className="bi bi-tags"></i> {tag}
+          <i className="bi bi-tags"></i> {(tag != '#')? tag : ' ' }
         </p>
       </div>
       <i
