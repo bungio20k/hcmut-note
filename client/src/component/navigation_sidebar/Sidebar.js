@@ -6,7 +6,7 @@ export default function Sidebar(props) {
 
   const tagData = [...new Set(props.notes.filter((note) => (note.tag != '#')).map((note) => note.tag))];
   let searchButton;
-  useEffect(() => { searchButton = document.getElementById("search-button") }, []);
+  useEffect(() => { searchButton = document.getElementById("search-button") });
 
   const handleTagClick = (tag) => {
     props.setSearchText(tag);
