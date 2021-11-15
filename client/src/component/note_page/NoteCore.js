@@ -52,6 +52,7 @@ export default function NoteCore(props) {
       const index = prev.findIndex((item) => item.id === savedNote.id)
       savedNote.id = savedNote.databaseid;
       savedNote.date = (new Date(savedNote.date)).toString();
+      if (savedNote.tag[0] != '#') savedNote.tag = '#' + savedNote.tag;
       prev[index] = savedNote;
       console.log([...prev])
       return [...prev];

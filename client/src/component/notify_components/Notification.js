@@ -179,7 +179,7 @@ export default function Notification(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-          <Sidebar />
+          <Sidebar setSearchText={props.changeText} notes={props.notes}/>
           <div className="col-7">
             {currentDay.toDateString() == new Date().toDateString() ? (
               <button className="btn text-light btn-info rounded-pill">

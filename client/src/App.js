@@ -87,7 +87,7 @@ export default function App() {
 
           <Route path="/workspace">
             {token ?
-              <WorkSpace searchText={searchText} changeText={changeText} setToken={setToken} />
+              <WorkSpace notes={notes} searchText={searchText} changeText={changeText} setToken={setToken} />
               :
               <Redirect to='/login' />}
           </Route>

@@ -92,14 +92,17 @@ app.post('/notechange', async (req, res) => {
   // modify note
   const currentNote = await noteModel.findById(note.databaseid);
   currentNote.id = note.databaseid;
-  currentNote.title = note.title,
-    currentNote.text = note.text,
-    currentNote.date = ((note.date == 'Invalid Date') ? '' : (new Date(note.date)).toString()),
-    currentNote.time = note.time,
-    currentNote.tag = note.tag,
-    currentNote.pinned = note.pinned,
-    currentNote.content = note.content,
-    currentNote.color = note.color
+  currentNote.title = note.title;
+  currentNote.text = note.text;
+  currentNote.date = ((note.date == 'Invalid Date') ? '' : (new Date(note.date)).toString());
+  currentNote.time = note.time;
+  if (note.tag[0] == '#')
+    currentNote.tag = note.tag;
+  else
+    currentNote.tag = '#' + note.tag;
+  currentNote.pinned = note.pinned;
+  currentNote.content = note.content;
+  currentNote.color = note.color;
   currentNote.databaseid = note.databaseid;
   currentNote.save();
 

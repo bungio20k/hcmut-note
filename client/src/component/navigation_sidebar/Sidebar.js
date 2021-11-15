@@ -1,9 +1,18 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const tagData = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"];
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+
+  const tagData = [...new Set(props.notes.filter((note) => (note.tag != '')).map((note) => note.tag))];
+  let searchButton;
+  useEffect(() => { searchButton = document.getElementById("search-button") }, []);
+
+  const handleTagClick = (tag) => {
+    props.setSearchText(tag);
+    searchButton?.click();
+  }
+
   return (
     <div className="col-1">
       <Link to="/notepage">
@@ -21,13 +30,10 @@ export default function Sidebar() {
           <i className="bi bi-briefcase-fill"></i>
         </button>
       </Link>
-      <button type="button" className="btn btn-outline-info w-100">
-        <i className="bi bi-bookmark-plus-fill"></i>
-      </button>
       {tagData.map((tag) => (
-        <button className="btn btn-outline-light col-2 text-secondary w-100">
+        <button className="btn btn-outline-light col-2 text-secondary w-100 text-truncate" onClick={() => handleTagClick(tag)}>
           <i className="bi bi-tag"></i>
-          {tag}
+          <h6>{tag}</h6>
         </button>
       ))}
     </div>

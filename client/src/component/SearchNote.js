@@ -13,6 +13,7 @@ import NoteCore from "./note_page/NoteCore";
 
 import { nanoid } from "nanoid";
 import "suneditor/dist/css/suneditor.min.css";
+import axios from 'axios';
 
 export default function SearchNote(props) {
   const logOut = () => {
@@ -47,6 +48,13 @@ export default function SearchNote(props) {
   };
 
   const deleteNote = (id) => {
+    ///////////////// code for api /////////////////////////////
+    const noteToDelete = props.notes[props.notes.findIndex((item) => item.id == id)];
+    axios.post('/deletenote', {
+      userId: localStorage.getItem('token'),
+      noteId: noteToDelete.databaseid,
+    });
+    ////////////////////////////////////////////////////////////
     props.setNotes((prev) => prev.filter((note) => id !== note.id));
   };
 
@@ -54,10 +62,23 @@ export default function SearchNote(props) {
     setNote(props.notes.find((note) => note.id === id));
   };
 
+  //////////////// code for api //////////////////////////
+  const handleNoteUpdate = async (note) => {
+    const res = await axios.post('/notechange', {
+      userId: localStorage.getItem('token'),
+      note: note
+    }).then((response) => { return response })
+
+    return res;
+  }
+  ////////////////////////////////////////////////////////
+
   const pinHandler = (id, status) => {
     props.setNotes((prev) => {
-      prev[prev.findIndex((note) => note.id === id)].pinned =
+      const noteToUpdate = prev.findIndex((note) => note.id === id);
+      prev[noteToUpdate].pinned =
         status === "n" ? "y" : "n";
+      handleNoteUpdate(prev[noteToUpdate]);
       return [...prev];
     });
   };
@@ -93,7 +114,7 @@ export default function SearchNote(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-          <Sidebar />
+          <Sidebar setSearchText={props.changeText} notes={props.notes}/>
           <div className="col-lg-11">
             <div className="container-fluid">
               <div>
