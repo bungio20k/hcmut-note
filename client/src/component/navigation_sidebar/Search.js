@@ -15,7 +15,7 @@ const Search = (props) => {
                 </button>
                 :
                 <Link to='/search'>
-                    <button className="input-group-text border-0" id="search-addon">
+                    <button className="input-group-text border-0" id="search-button">
                         <i className="bi bi-search"></i>
                     </button>
                 </Link>

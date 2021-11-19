@@ -124,7 +124,7 @@ export default function NotePage(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-          <Sidebar />
+          <Sidebar setSearchText={props.changeText} notes={props.notes}/>
           <div className="col-lg-11">
             <div className="container-fluid">
               <div>

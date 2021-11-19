@@ -107,7 +107,7 @@ const WorkSpace = (props) => {
       <br />
       <div className="content container-fluid pe-0">
         <div className="row">
-          <Sidebar />
+          <Sidebar setSearchText={props.changeText} notes={props.notes}/>
           <div className="main-content col-lg-11 mt-4">
             <div className="container-fluid">
               <div className="row">
