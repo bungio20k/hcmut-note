@@ -266,7 +266,7 @@ export default function NoteCore(props) {
             <div className="modal-footer justify-content-between">
               <div className="d-flex align-items-center">
                 <div>
-                  <span className="badge bg-primary">{props.note.tag}</span>
+                  <span className="badge bg-primary">{(props.note.tag!= '#')?   props.note.tag : ''}</span>
                 </div>
                 {(props.note.date != 'Invalid Date') && <p className="ms-3 mb-0">{(new Date(props.note.date)).toDateString()}</p>}
                 <p className="ms-3 mb-0">{props.note.time}</p>

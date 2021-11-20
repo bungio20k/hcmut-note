@@ -24,8 +24,10 @@ export default function Contact() {
               <h2 id="h2text">We’d love to hear from you </h2>
               <h5 id="hometext">
                 {" "}
-                Have questions about our products, features, trials?
+                Have questions about our products, features?
                 Need a demo?
+              </h5>
+              <h5>
                 Our teams will help you.
               </h5>
 
@@ -74,6 +76,8 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
       <Footer />
     </div>
   );

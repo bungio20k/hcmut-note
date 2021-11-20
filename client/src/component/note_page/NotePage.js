@@ -110,12 +110,8 @@ export default function NotePage(props) {
             />
           </div>
 
-          <button className="btn btn-outline-light col-1 offset-md-2">
-            <i className="bi bi-lightbulb"></i>
-          </button>
-
           <Link to="/">
-            <button className="btn btn-outline-light col-1" onClick={logOut} >
+            <button className="btn btn-outline-light col-1 offset-md-3" onClick={logOut} >
               <i className="bi bi-box-arrow-in-left"></i>
             </button>
           </Link>
