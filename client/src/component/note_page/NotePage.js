@@ -196,7 +196,23 @@ export default function NotePage(props) {
       </div>
 
       <br />
-      <Footer />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Footer/>
     </>
   );
 }

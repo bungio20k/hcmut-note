@@ -117,37 +117,6 @@ app.post('/deletenote', async (req, res) => {
   list.save();
 })
 
-// app.post('/todaynote', async (req, res) => {
-//   const data = await notesListModel.findOne({ user: req.body.userId }).populate('notes');
-//   if (data) res.send(data.notes.filter(
-//     (note) => note.date == req.body.date
-//   ));
-// })
-
-// app.post('/weeknote', async (req, res) => {
-//   console.log(req.body);
-//   const data = await notesListModel.findOne({ user: req.body.userId }).populate('notes');
-//   const week = [
-//     "Sunday",
-//     "Monday",
-//     "Tuesday",
-//     "Wednesday",
-//     "Thursday",
-//     "Friday",
-//     "Saturday",
-//   ];
-//   notedata = {
-//   };
-//   for (let i = 0; i < 7; i++) {
-//     const currentDay = new Date();
-//     currentDay.setDate(currentDay.getDate() + (i - currentDay.getDay()))
-//     notedata[week[i]] = data.notes.filter((note) => (
-//       (new Date(note.date).toDateString() == currentDay.toDateString())
-//     ))
-//   }
-//   console.log(notedata);
-//   res.send(notedata);
-// })
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));

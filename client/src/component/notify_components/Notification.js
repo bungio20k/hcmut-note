@@ -235,6 +235,9 @@ export default function Notification(props) {
         </div>
       </div>
       <br />
+      <br />
+      <br />
+      <br />
       <Footer />
     </div>
   );
