@@ -48,7 +48,7 @@ const weekNote = (data, setNotes) => {
     ))
   }
   console.log(notedata);
-  setNotes({...notedata});
+  setNotes({ ...notedata });
 }
 
 // const fetchWeek = async (setNotes) => {
@@ -64,11 +64,16 @@ export default function Notification(props) {
   const [notes, setNotes] = useState([]);
   const [currentDay, changeDay] = useState(new Date());
 
+  const [editStatus, setEditStatus] = useState({
+    status: false,
+    id: "",
+  });
+
   useEffect(() => {
     const todayNote = props.notes.filter(note => (new Date(note.date)).toDateString() == currentDay.toDateString());
     console.log(todayNote);
     setNotes([...todayNote]);
-  }, [currentDay]);
+  }, [currentDay, editStatus]);
 
   useEffect(() => weekNote(props.notes, setWeek), [props.notes]);
 
@@ -82,13 +87,6 @@ export default function Notification(props) {
     content: "",
     pinned: "n",
     color: "#000000",
-  });
-
-  // useEffect(() => fetchWeek(setWeek), [note]);
-
-  const [editStatus, setEditStatus] = useState({
-    status: false,
-    id: "",
   });
 
   const editNote = (id) => {
@@ -175,7 +173,7 @@ export default function Notification(props) {
       <br />
       <div className="container-fluid">
         <div className="row">
-          <Sidebar setSearchText={props.changeText} notes={props.notes}/>
+          <Sidebar setSearchText={props.changeText} notes={props.notes} />
           <div className="col-7">
             {currentDay.toDateString() == new Date().toDateString() ? (
               <button className="btn text-light btn-info rounded-pill">
@@ -204,7 +202,7 @@ export default function Notification(props) {
             </div>
           </div>
           <div className="col justify-self-center text-info" id="calendar">
-            <Calendar value={currentDay} onChange={changeDay} calendarType="US"/>
+            <Calendar value={currentDay} onChange={changeDay} calendarType="US" />
             <button
               type="button"
               className="btn btn-info mb-2 text-secondary rounded-pill invisible"
@@ -218,12 +216,16 @@ export default function Notification(props) {
         </div>
       </div>
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="container">
         <button className="btn text-light btn-info rounded-pill offset-md-1">
           <i className="bi bi-calendar-minus-fill"> </i>
           This week
         </button>
-        <div className="row border border-info">
+        <div className="row border border-info mt-2">
           {week.map((day) => (
             <div className="col border">
               <h5 className="text-info text-center">{day}</h5>

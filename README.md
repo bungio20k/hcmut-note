@@ -16,23 +16,20 @@ là không thực sự phù hợp với cách tổ chức thời gian của sinh
 
 # CLASS
 
-L05
+L05 - attqv
 
 
-## HOW TO INSTALL AND RUN THIS PROJECT
+# HOW TO INSTALL AND RUN THIS PROJECT
 
 On root directory:
 
-1. `npm install`
-1. `npm start`
+1. `npm install` to install necessary packages.
+2. `npm start` to run the server on port 3001 of the PC
 
-This will run the server on port 3001 of the PC
-
-Go back to root directory:
+Open another terminal:
 
 1. `cd client`
-1. `npm install`
-1. `npm start`
+2. `npm install` to install necessary packages.
+3. `npm start` to run the react application on port 3000 of the PC.<br>
 
-This will run the frontend on port 3000 of the PC.<br>
 Open http://localhost:3000 to view it in the browser.
